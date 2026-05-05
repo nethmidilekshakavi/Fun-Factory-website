@@ -1,10 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Ultimate Kids Venue – Sri Lanka's First & Finest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+          --blue: #1565c0;
+          --red: #e53935;
+          --yellow: #fdd835;
+          --green: #43a047;
+          --pink: #f06292;
+          --bg: #ffffff;
+          --bubble1: rgba(100,181,246,0.25);
+          --bubble2: rgba(252,228,236,0.35);
+          --bubble3: rgba(255,241,118,0.25);
+          --bubble4: rgba(165,214,167,0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+          font-family: 'Nunito', sans-serif;
+          background: var(--bg);
+          overflow-x: hidden;
+          min-height: 100vh;
+        }
+
+        /* ── Bubbles Background ── */
+        .bubbles-bg {
+          position: fixed;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+          overflow: hidden;
+        }
+        .bubble {
+          position: absolute;
+          border-radius: 50%;
+          animation: floatBubble linear infinite;
+          opacity: 0;
+        }
+        .bubble:nth-child(1)  { width:220px;height:220px;top:5%;left:2%;   background:var(--bubble1);animation-duration:18s;animation-delay:0s;  }
+        .bubble:nth-child(2)  { width:160px;height:160px;top:15%;right:8%; background:var(--bubble2);animation-duration:22s;animation-delay:2s;  }
+        .bubble:nth-child(3)  { width:280px;height:280px;top:55%;left:70%;background:var(--bubble3);animation-duration:26s;animation-delay:4s;  }
+        .bubble:nth-child(4)  { width:120px;height:120px;top:75%;left:10%;background:var(--bubble4);animation-duration:20s;animation-delay:1s;  }
+        .bubble:nth-child(5)  { width:190px;height:190px;top:40%;right:2%;background:var(--bubble1);animation-duration:24s;animation-delay:3s;  }
+        .bubble:nth-child(6)  { width:100px;height:100px;top:85%;right:25%;background:var(--bubble2);animation-duration:19s;animation-delay:5s;  }
+        .bubble:nth-child(7)  { width:240px;height:240px;top:30%;left:38%;background:var(--bubble3);animation-duration:30s;animation-delay:6s;  }
+
+        @keyframes floatBubble {
+          0%   { opacity:0; transform:translateY(30px) scale(0.9); }
+          10%  { opacity:1; }
+          90%  { opacity:1; }
+          100% { opacity:0; transform:translateY(-40px) scale(1.05); }
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+          position: relative;
+          z-index: 1;
+          min-height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          padding: 60px 80px 60px 80px;
+          gap: 40px;
+        }
+
+        .hero-left { display: flex; flex-direction: column; gap: 28px; }
+
+        .eyebrow {
+          font-size: 14px;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--blue);
+          animation: fadeSlideUp 0.6s ease both;
+        }
+
+        .hero-title {
+          font-family: 'Baloo 2', cursive;
+          font-size: clamp(42px, 5vw, 68px);
+          line-height: 1.1;
+          color: #1a1a2e;
+          animation: fadeSlideUp 0.7s ease 0.1s both;
+        }
+        .hero-title .accent-kids {
+          color: var(--red);
+          display: inline-block;
+          animation: wiggle 2s ease-in-out 1.5s infinite;
+        }
+        .hero-title .accent-blue { color: var(--blue); }
+
+        @keyframes wiggle {
+          0%,100% { transform: rotate(-2deg); }
+          50%      { transform: rotate(2deg); }
+        }
+
+        .hero-desc {
+          font-size: 18px;
+          color: #555;
+          line-height: 1.7;
+          max-width: 420px;
+          animation: fadeSlideUp 0.7s ease 0.2s both;
+        }
+
+        .badges {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          animation: fadeSlideUp 0.7s ease 0.35s both;
+        }
+
+        .badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          border: 2px solid #dde;
+          border-radius: 50px;
+          padding: 10px 22px;
+          font-size: 15px;
+          font-weight: 700;
+          color: #333;
+          width: fit-content;
+          background: rgba(255,255,255,0.7);
+          backdrop-filter: blur(6px);
+          transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+          cursor: default;
+        }
+        .badge:hover {
+          transform: translateX(6px);
+          border-color: var(--blue);
+          box-shadow: 0 4px 18px rgba(21,101,192,0.15);
+        }
+        .badge-icon { font-size: 18px; }
+
+        .cta-row {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          animation: fadeSlideUp 0.7s ease 0.5s both;
+        }
+
+        .btn-primary {
+          background: var(--blue);
+          color: #fff;
+          border: none;
+          padding: 16px 36px;
+          border-radius: 50px;
+          font-family: 'Nunito', sans-serif;
+          font-size: 16px;
+          font-weight: 800;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 6px 24px rgba(21,101,192,0.35);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(21,101,192,0.45); }
+
+        .btn-secondary {
+          background: transparent;
+          color: var(--red);
+          border: 2.5px solid var(--red);
+          padding: 16px 36px;
+          border-radius: 50px;
+          font-family: 'Nunito', sans-serif;
+          font-size: 16px;
+          font-weight: 800;
+          cursor: pointer;
+          transition: transform 0.2s, background 0.2s, color 0.2s;
+        }
+        .btn-secondary:hover { background: var(--red); color: #fff; transform: translateY(-3px); }
+
+        /* ── Hero Right / Mascot ── */
+        .hero-right {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          position: relative;
+          animation: fadeSlideUp 0.8s ease 0.3s both;
+        }
+
+        .mascot-wrap {
+          position: relative;
+          width: 420px;
+          height: 460px;
+        }
+
+        .mascot-circle {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 320px;
+          height: 320px;
+          background: radial-gradient(circle, rgba(100,181,246,0.18) 0%, rgba(100,181,246,0) 70%);
+          border-radius: 50%;
+          animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+          0%,100% { transform: translateX(-50%) scale(1); }
+          50%      { transform: translateX(-50%) scale(1.08); }
+        }
+
+        .mascot-img {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 380px;
+          height: auto;
+          object-fit: contain;
+          filter: drop-shadow(0 20px 40px rgba(21,101,192,0.2));
+          animation: mascotFloat 4s ease-in-out infinite;
+        }
+        @keyframes mascotFloat {
+          0%,100% { transform: translateX(-50%) translateY(0px); }
+          50%      { transform: translateX(-50%) translateY(-14px); }
+        }
+
+        /* Paint splash decorations */
+        .splash {
+          position: absolute;
+          border-radius: 50%;
+          opacity: 0.55;
+          animation: splashPop 0.5s ease both;
+        }
+        .splash-1 { width:28px;height:28px;background:var(--yellow);top:60px;left:30px; animation-delay:1s; }
+        .splash-2 { width:18px;height:18px;background:var(--red);  top:140px;right:20px;animation-delay:1.3s;}
+        .splash-3 { width:22px;height:22px;background:var(--green);bottom:120px;right:10px;animation-delay:1.6s;}
+        .splash-4 { width:14px;height:14px;background:var(--pink); bottom:90px;left:20px;animation-delay:1.9s;}
+
+        @keyframes splashPop {
+          0% { transform: scale(0); opacity:0; }
+          70%{ transform: scale(1.3); opacity:0.6;}
+          100%{ transform: scale(1); opacity:0.55;}
+        }
+
+        /* ── Features Strip ── */
+        .features-strip {
+          position: relative;
+          z-index: 1;
+          background: linear-gradient(135deg, #1565c0 0%, #1e88e5 100%);
+          padding: 40px 80px;
+          display: flex;
+          gap: 40px;
+          justify-content: center;
+          flex-wrap: wrap;
+          box-shadow: 0 -4px 24px rgba(21,101,192,0.15);
+        }
+
+        .feature-item {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          color: #fff;
+          animation: fadeSlideUp 0.6s ease both;
+        }
+        .feature-item:nth-child(1){animation-delay:0.1s;}
+        .feature-item:nth-child(2){animation-delay:0.2s;}
+        .feature-item:nth-child(3){animation-delay:0.3s;}
+        .feature-item:nth-child(4){animation-delay:0.4s;}
+
+        .feature-icon-wrap {
+          width: 54px;height:54px;
+          background: rgba(255,255,255,0.18);
+          border-radius: 16px;
+          display:flex;align-items:center;justify-content:center;
+          font-size:26px;
+          flex-shrink:0;
+          transition:transform 0.3s;
+        }
+        .feature-item:hover .feature-icon-wrap { transform:rotate(10deg) scale(1.1); }
+
+        .feature-text h4 { font-size:16px;font-weight:800; }
+        .feature-text p  { font-size:13px;opacity:0.8;font-weight:600; }
+
+        /* ── Locations Section ── */
+        .locations {
+          position: relative;
+          z-index: 1;
+          padding: 80px 80px;
+          text-align: center;
+        }
+
+        .section-label {
+          font-size: 13px;
+          font-weight: 800;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--red);
+          margin-bottom: 12px;
+        }
+
+        .section-title {
+          font-family: 'Baloo 2', cursive;
+          font-size: clamp(30px, 4vw, 48px);
+          color: #1a1a2e;
+          margin-bottom: 48px;
+        }
+
+        .location-cards {
+          display: flex;
+          gap: 28px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .location-card {
+          background: #fff;
+          border: 2px solid #eef;
+          border-radius: 24px;
+          padding: 36px 32px;
+          width: 260px;
+          transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+          cursor: pointer;
+        }
+        .location-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 48px rgba(21,101,192,0.15);
+          border-color: var(--blue);
+        }
+        .loc-icon { font-size:36px;margin-bottom:14px; }
+        .loc-name { font-family:'Baloo 2',cursive;font-size:22px;color:#1a1a2e;margin-bottom:8px; }
+        .loc-detail { font-size:14px;color:#888;font-weight:600;line-height:1.6; }
+
+        /* ── Age Range Banner ── */
+        .age-banner {
+          position:relative;z-index:1;
+          margin: 0 80px 80px;
+          background: linear-gradient(135deg,#fff9c4,#ffe082);
+          border-radius:28px;
+          padding:48px 60px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:32px;
+          flex-wrap:wrap;
+          border: 2px solid #fdd835;
+          overflow:hidden;
+        }
+        .age-banner::before {
+          content:'🎈';font-size:120px;
+          position:absolute;right:40px;top:50%;transform:translateY(-50%);
+          opacity:0.15;pointer-events:none;
+        }
+        .age-left h2 {
+          font-family:'Baloo 2',cursive;
+          font-size:clamp(28px,4vw,44px);
+          color:#1a1a2e;margin-bottom:8px;
+        }
+        .age-left p { font-size:16px;color:#555;font-weight:600;max-width:380px; }
+        .age-badge {
+          background:#fff;
+          border:3px solid var(--yellow);
+          border-radius:20px;
+          padding:20px 40px;
+          text-align:center;
+          box-shadow:0 8px 24px rgba(253,216,53,0.3);
+        }
+        .age-badge .num {
+          font-family:'Baloo 2',cursive;
+          font-size:60px;
+          line-height:1;
+          color:var(--blue);
+        }
+        .age-badge .label { font-size:15px;font-weight:800;color:#555;margin-top:4px; }
+
+        /* ── Fade animations ── */
+        @keyframes fadeSlideUp {
+          from { opacity:0; transform:translateY(24px); }
+          to   { opacity:1; transform:translateY(0);    }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+          .hero {
+            grid-template-columns: 1fr;
+            padding: 48px 32px 0;
+            text-align: center;
+          }
+          .hero-left { align-items:center; }
+          .hero-desc { text-align:center; }
+          .hero-right { order:-1; }
+          .mascot-wrap { width:280px;height:320px; }
+          .mascot-img { width:260px; }
+          .features-strip { padding:32px 24px; gap:24px; }
+          .locations { padding:60px 32px; }
+          .age-banner { margin:0 24px 60px; padding:32px 28px; }
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<!-- Floating bubbles -->
+<div class="bubbles-bg">
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-left">
+        <p class="eyebrow">Sri Lanka's First &amp; Finest</p>
+
+        <h1 class="hero-title">
+            The Ultimate<br>
+            <span class="accent-kids">Kids</span>
+            <span class="accent-blue"> Venue!</span>
+        </h1>
+
+        <p class="hero-desc">
+            Premium indoor playground for children aged 0–11.
+            A world of safe exploration at <strong>Nawala</strong> &amp; <strong>Mount Lavinia</strong>.
+        </p>
+
+        <div class="badges">
+            <div class="badge"><span class="badge-icon">❄️</span> Air-Conditioned</div>
+            <div class="badge"><span class="badge-icon">👀</span> Fully Supervised</div>
+            <div class="badge"><span class="badge-icon">✨</span> Always Clean</div>
+        </div>
+
+        <div class="cta-row">
+            <button class="btn-primary">Book a Visit 🎉</button>
+            <button class="btn-secondary">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Mascot / right side -->
+    <div class="hero-right">
+        <div class="mascot-wrap">
+            <div class="mascot-circle"></div>
+            <!-- Paint splash dots -->
+            <div class="splash splash-1"></div>
+            <div class="splash splash-2"></div>
+            <div class="splash splash-3"></div>
+            <div class="splash splash-4"></div>
+            <!-- Replace src with actual mascot image path -->
+            <img
+                    class="mascot-img"
+                    src="/mnt/user-data/uploads/1777915990523_image.png"
+                    alt="Playful kids mascot"
+                    onerror="this.style.display='none'"
+            />
+            <!-- Fallback emoji if image fails -->
+            <div id="emoji-fallback" style="
+          position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+          font-size:200px;line-height:1;display:none;
+        ">🧒</div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+    <div class="feature-item">
+        <div class="feature-icon-wrap">🛝</div>
+        <div class="feature-text">
+            <h4>Safe Play Zones</h4>
+            <p>Designed for every age</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon-wrap">🎂</div>
+        <div class="feature-text">
+            <h4>Birthday Parties</h4>
+            <p>Unforgettable celebrations</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon-wrap">🎨</div>
+        <div class="feature-text">
+            <h4>Creative Activities</h4>
+            <p>Art, crafts &amp; more</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon-wrap">🏆</div>
+        <div class="feature-text">
+            <h4>#1 in Sri Lanka</h4>
+            <p>First &amp; finest since day one</p>
+        </div>
+    </div>
+</div>
+
+<!-- LOCATIONS -->
+<section class="locations">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title">Two Amazing Locations</h2>
+    <div class="location-cards">
+        <div class="location-card">
+            <div class="loc-icon">📍</div>
+            <div class="loc-name">Nawala</div>
+            <div class="loc-detail">Open 7 days a week<br>9:00 AM – 8:00 PM</div>
+        </div>
+        <div class="location-card">
+            <div class="loc-icon">📍</div>
+            <div class="loc-name">Mount Lavinia</div>
+            <div class="loc-detail">Open 7 days a week<br>9:00 AM – 8:00 PM</div>
+        </div>
+    </div>
+</section>
+
+<!-- AGE BANNER -->
+<div class="age-banner">
+    <div class="age-left">
+        <h2>Perfect for Kids Aged 0–11</h2>
+        <p>From tiny toddlers to adventurous pre-teens — we have dedicated zones built just for them.</p>
+    </div>
+    <div class="age-badge">
+        <div class="num">0–11</div>
+        <div class="label">Years Old</div>
+    </div>
+</div>
+
+<script>
+    // Show emoji fallback if mascot image fails
+    const img = document.querySelector('.mascot-img');
+    img.addEventListener('error', () => {
+      document.getElementById('emoji-fallback').style.display = 'block';
+    });
+</script>
+
 </body>
 </html>
