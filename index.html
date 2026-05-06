@@ -549,7 +549,7 @@
           position: relative; z-index: 5;
           padding: 80px;
           text-align: center;
-          background: rgba(214,239,250,0.4);
+
         }
         .section-label {
           font-size: 13px; font-weight: 800;
@@ -2361,6 +2361,329 @@
 @media (max-width: 768px) {
   .hero-slider { max-width: 100%; height: 260px; }
 }
+        /* ════ PARTY CTA + SOCIALS ════ */
+.party-cta-section {
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  z-index: 5;
+}
+
+.party-cta-banner {
+  background: #1A3A6B;
+  border-radius: 22px;
+  padding: 30px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 780px;
+  width: 100%;
+  border: 2.5px solid #2a5090;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  width: 80%;
+}
+
+.party-cta-banner::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  top: -60px; right: 30%;
+  pointer-events: none;
+
+}
+
+.party-cta-img-left {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.party-cta-img-right {
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.party-cta-center {
+  text-align: center;
+  flex: 1;
+}
+
+.party-cta-center h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(22px, 3vw, 30px);
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.party-cta-center .cta-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  font-style: italic;
+  margin: 0 0 10px;
+}
+
+.party-cta-center .cta-phone {
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFD600;
+}
+
+.party-socials {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.party-socials a {
+  display: block;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.22s;
+  text-decoration: none;
+}
+
+.party-socials a:hover {
+  transform: scale(1.12) translateY(-4px);
+}
+
+.party-socials a img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .party-cta-section { padding: 36px 18px; }
+  .party-cta-banner { padding: 22px 18px; flex-wrap: wrap; justify-content: center; text-align: center; }
+  .party-cta-img-left, .party-cta-img-right { width: 80px; }
+  .party-socials a { width: 52px; height: 52px; }
+}
+
+@media (max-width: 400px) {
+  .party-cta-img-left, .party-cta-img-right { display: none; }
+}
+
+        /* ════ FOOTER ════ */
+.ff-footer {
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+  border-top: 2px solid #e8f0f8;
+  position: relative;
+  z-index: 5;
+}
+
+.ff-footer-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 0.8fr 1.1fr;
+  gap: 40px;
+  padding: 56px 60px 40px;
+  max-width: 1800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ff-foot-col h4 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 18px; font-weight: 800;
+  color: #1a1a2e; margin: 0 0 16px;
+}
+
+.ff-foot-col p {
+  font-size: 13.5px; color: #555;
+  font-weight: 600; line-height: 1.75;
+}
+
+.ff-foot-col ul {
+  list-style: disc;
+  padding-left: 18px; margin: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.ff-foot-col ul li a {
+  font-size: 13.5px; color: #555;
+  font-weight: 600; text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ff-foot-col ul li a:hover { color: #1A5FA8; }
+
+/* About col */
+.ff-footer-logo {
+  width: 140px; height: auto;
+  display: block; margin: 14px 0 12px;
+}
+
+.ff-about-party {
+  font-size: 13px; color: #555;
+  font-weight: 600; margin-top: 14px;
+  line-height: 1.65;
+  border-top: 1px dashed #dde;
+  padding-top: 12px;
+}
+
+/* Contact */
+.ff-contact-item {
+  display: flex; align-items: flex-start;
+  gap: 9px; margin-bottom: 11px;
+}
+
+.ff-contact-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #3BAEE8;
+  margin-top: 7px; flex-shrink: 0;
+}
+
+.ff-contact-item a {
+  color: #1A5FA8; font-weight: 700;
+  font-size: 13.5px; text-decoration: underline;
+}
+
+.ff-contact-item span.txt {
+  font-size: 13px; color: #555;
+  font-weight: 600; line-height: 1.65;
+}
+
+/* Location cards */
+.ff-loc-card {
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.ff-loc-card.yellow {
+  background: #FFF9C4;
+  border-left: 4px solid #FFD600;
+}
+
+.ff-loc-card.blue {
+  background: #E3F2FD;
+  border-left: 4px solid #3BAEE8;
+}
+
+.ff-loc-name {
+  font-family: 'Baloo 2', cursive;
+  font-size: 15px; font-weight: 800;
+  color: #1a1a2e; margin-bottom: 3px;
+}
+
+.ff-loc-addr {
+  font-size: 12.5px; color: #444;
+  font-weight: 600; margin-bottom: 3px;
+}
+
+.ff-loc-tel {
+  font-size: 12.5px; color: #666;
+  font-weight: 700;
+}
+
+/* Subscribe */
+.ff-subscribe-wrap { margin-top: 18px; }
+
+.ff-subscribe-wrap h5 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 17px; font-weight: 800;
+  color: #1a1a2e; margin: 0 0 6px;
+}
+
+.ff-subscribe-wrap p {
+  font-size: 13px; color: #555;
+  font-weight: 600; line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.ff-sub-input {
+  width: 100%; padding: 11px 14px;
+  border: 2px solid #E63329;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px; color: #333;
+  outline: none; box-sizing: border-box;
+  margin-bottom: 9px;
+}
+
+.ff-sub-input:focus { border-color: #1A5FA8; }
+
+.ff-sub-btn {
+  width: 100%;
+  background: #1A3A6B;
+  color: #fff; border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 1.5px; cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ff-sub-btn:hover { background: #1A5FA8; }
+
+/* Kids images in footer */
+.ff-footer-kids {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  padding: 0 60px 0;
+  pointer-events: none;
+}
+
+.ff-footer-kid {
+  width: 160px; height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Bottom bar */
+.ff-footer-bottom {
+  background: #f4f8fc;
+  border-top: 1px solid #dde8f5;
+  padding: 16px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ff-footer-bottom span,
+.ff-footer-bottom a {
+  font-size: 13px; color: #888;
+  font-weight: 600; text-decoration: none;
+}
+
+.ff-footer-bottom a:hover { color: #1A5FA8; }
+.ff-footer-bottom .heart { color: #E63329; }
+.ff-footer-bottom-links { display: flex; gap: 22px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ff-footer-main { grid-template-columns: 1fr 1fr; gap: 30px; padding: 44px 40px 30px; }
+  .ff-footer-bottom { padding: 14px 40px; }
+  .ff-footer-kids { padding: 0 40px; }
+}
+
+@media (max-width: 768px) {
+  .ff-footer-main { grid-template-columns: 1fr; gap: 28px; padding: 36px 18px 24px; }
+  .ff-footer-bottom { padding: 14px 18px; flex-direction: column; text-align: center; }
+  .ff-footer-bottom-links { justify-content: center; }
+  .ff-footer-kids { padding: 0 18px; }
+  .ff-footer-kid { width: 110px; }
+}
     </style>
 </head>
 <body>
@@ -3192,6 +3515,172 @@
 
     </div>
 </section>
+
+<!-- PARTY CTA + SOCIALS -->
+<section class="party-cta-section">
+
+    <div class="party-cta-banner">
+
+
+        <img class="party-cta-img-left"
+             src="images/location/img_2.png"
+             alt="Kid with birthday cake">
+
+        <div class="party-cta-center">
+            <h2>Ready to Book a Party?</h2>
+            <p class="cta-sub">Call us to check availability and packages</p>
+            <p class="cta-phone">Call 077 360 3777</p>
+        </div>
+
+
+        <img class="party-cta-img-right"
+             src="images/location/img_3.png"
+             alt="Kids celebrating">
+
+    </div>
+
+    <!-- SOCIAL ICONS -->
+    <div class="party-socials">
+
+        <a href="https://facebook.com/YourPage" target="_blank" title="Facebook">
+            <img src="images/location/img_4.png" alt="Facebook">
+        </a>
+
+        <a href="https://instagram.com/YourPage" target="_blank" title="Instagram">
+            <img src="images/location/img_5.png" alt="Instagram">
+        </a>
+
+        <a href="https://youtube.com/YourChannel" target="_blank" title="YouTube">
+            <img src="images/location/img_6.png" alt="YouTube">
+        </a>
+
+        <a href="https://tiktok.com/@YourPage" target="_blank" title="TikTok">
+            <img src="images/location/img_7.png" alt="TikTok">
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="ff-footer">
+
+    <div class="ff-footer-main">
+
+        <!-- COL 1: About -->
+        <div class="ff-foot-col">
+            <h4>About</h4>
+            <p>Fun Factory is Sri Lanka's premier supervised indoor playground for children aged 0–11 years. With world-class facilities in Nawala and Mount Lavinia, we deliver the ultimate kids play experience in a safe, clean and exciting environment.</p>
+
+            <img class="ff-footer-logo" src="images/logo.png" alt="Fun Factory Logo">
+
+            <p class="ff-about-party">
+                🎉 <strong>Party Bookings</strong><br>
+                Parties can be booked any day of the week. Call us or visit our website!
+            </p>
+        </div>
+
+        <!-- COL 2: Contact -->
+        <div class="ff-foot-col">
+            <h4>Contact Us</h4>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <br>
+                <span class="txt">
+          <a href="tel:0112802656">011 2802656</a><br>
+          <a href="tel:0773603777">077 3603777</a>
+        </span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt">&nbsp;</span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt"><a href="mailto:info@funfactory.lk">info@funfactory.lk</a></span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt">
+          573 Nawala Road, Rajagiriya<br>
+          3rd Floor, Mount City Building,<br>
+          143 1/2 Galle Rd, Mount Lavinia
+        </span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt">
+          Mon–Fri: 9am–8pm<br>
+          Sat–Sun &amp; Public Holidays: 9am–8pm
+        </span>
+            </div>
+        </div>
+
+        <!-- COL 3: Quick Links -->
+        <div class="ff-foot-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Jungle Gym</a></li>
+                <li><a href="#">Toddlers &amp; Infants</a></li>
+                <li><a href="#">Library &amp; Activity Zones</a></li>
+                <li><a href="#">Cafe</a></li>
+                <li><a href="#">Membership</a></li>
+                <li><a href="#">Photo Album</a></li>
+                <li><a href="#">Event Calendar</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- COL 4: Locations + Subscribe -->
+        <div class="ff-foot-col">
+            <h4>Our Locations</h4>
+
+            <div class="ff-loc-card yellow">
+                <div class="ff-loc-name">Nawala Branch</div>
+                <div class="ff-loc-addr">573, Nawala Road, Rajagiriya</div>
+                <div class="ff-loc-tel">011 286 2656 · 077 360 3777</div>
+            </div>
+
+            <div class="ff-loc-card blue">
+                <div class="ff-loc-name">Mount Lavinia Branch</div>
+                <div class="ff-loc-addr">3rd Floor, Mount City Building, Galle Road</div>
+                <div class="ff-loc-tel">011 588 2656 · 077 360 3777</div>
+            </div>
+
+            <div class="ff-subscribe-wrap">
+                <h5>Subscribe</h5>
+                <p>Subscribe here with your email to get the very latest news about FUN FACTORY</p>
+                <input class="ff-sub-input" type="email" placeholder="Email Address">
+                <button class="ff-sub-btn">SUBMIT</button>
+            </div>
+        </div>
+
+    </div>
+
+<!--    &lt;!&ndash; Kids images middle &ndash;&gt;-->
+<!--    <div class="ff-footer-kids">-->
+<!--        <img class="ff-footer-kid" src="images/footer/img.png" alt="Girl with hoop">-->
+<!--        <img class="ff-footer-kid" src="images/footer-boy.png" alt="Boy with blocks">-->
+<!--    </div>-->
+
+    <!-- Bottom bar -->
+    <div class="ff-footer-bottom">
+        <span>© 2025 Fun Factory — All Rights Reserved. Website by Ribelz.</span>
+        <div class="ff-footer-bottom-links">
+            <a href="#">Site Map</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+        </div>
+        <span><span class="heart">♥</span> Made for kids, by people who love them</span>
+    </div>
+
+</footer>
 
 <script>
     function openLight(card) {
