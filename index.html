@@ -281,7 +281,7 @@
           font-family: 'Cherry Bomb', cursive;
           font-size: 80px;
           line-height: 1.1;
-          margin-top: -40px;
+          margin-top: 10px;
           margin-bottom: 30px;
 
         }
@@ -1562,6 +1562,118 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       transform: scale(1.05);
     }
+        @media (max-width: 768px) {
+  /* ... your existing mobile styles ... */
+
+  /* ADD THESE: */
+  .services-section {
+    padding: 36px 18px;
+  }
+  .svc-panel-inner {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+  .services-tabs {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .svc-tab-btn {
+    padding: 10px 22px;
+    font-size: 15px;
+  }
+}
+        /* ════ HERO IMAGE COLLAGE ════ */
+.img-stagger-wrap {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 230px 160px;
+  gap: 10px;
+  margin: 0 auto;
+  animation: float 4s ease-in-out infinite;
+}
+
+.img-s1 {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+  transition: transform 0.4s;
+  position: static;
+}
+
+.img-s2 {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+  transition: transform 0.4s;
+  position: static;
+}
+
+.img-s3 {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+  transition: transform 0.4s;
+  position: static;
+}
+
+.img-stagger-wrap img:hover {
+  transform: scale(1.03);
+  z-index: 10;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .img-stagger-wrap {
+    max-width: 100%;
+    grid-template-rows: 180px 120px;
+    gap: 8px;
+    height: auto;
+  }
+}
+ .img-stagger-wrap {
+  width: 100%;
+  max-width: 700px;
+  height: 500px;
+  margin-top: 5%;
+  right:8%;
+  animation: float 4s ease-in-out infinite;
+  border-radius: 22px;
+  overflow: hidden;
+
+}
+
+.img-s1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+  position: static;
+  border-radius: 22px;
+}
+
+.img-s1:hover { transform: scale(1.04); }
+
+@media (max-width: 768px) {
+  .img-stagger-wrap {
+    max-width: 100%;
+    height: 260px;
+  }
+}
     </style>
 </head>
 <body>
@@ -1653,8 +1765,6 @@
 
     <div class="img-stagger-wrap">
         <img class="img-s1" src="images/635210809_1450722320430634_2613594833364158350_n.jpg" alt="Fun Factory">
-        <img class="img-s2" src="images/525882933_1270897245079810_7566232732536309976_n.jpg" alt="Fun Factory">
-        <img class="img-s3" src="images/651843227_1474302798072586_3381062534841297678_n.jpg" alt="Fun Factory">
     </div>
 </section>
 
