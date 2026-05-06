@@ -1694,6 +1694,172 @@
     height: 260px;
   }
 }
+
+        .fex-section {
+    position: relative; z-index: 5;
+    padding: 80px;
+
+  }
+  .fex-eyebrow {
+    font-size: 13px; font-weight: 800;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 10px;
+  }
+  .fex-heading {
+    font-family: 'Cherry Bomb', cursive;
+    font-size: clamp(28px, 4vw, 50px);
+    color: #1a1a2e; margin-bottom: 36px;
+  }
+
+  /* ── Explorer wrapper ── */
+  .fex-wrap {
+    display: flex;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 2px solid #d0eaf8;
+    background: #fff;
+    min-height: 460px;
+    box-shadow: 0 12px 48px rgba(26,95,168,0.10);
+  }
+
+  /* ── Sidebar ── */
+  .fex-sidebar {
+    width: 230px;
+    flex-shrink: 0;
+    background: #f2f8ff;
+    padding: 24px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-right: 2px solid #d0eaf8;
+  }
+  .fex-sidebar-lbl {
+    font-family: 'Fredoka One', cursive;
+    font-size: 11px; font-weight: 800;
+    color: var(--blue); letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid #cce7f8;
+    margin-bottom: 4px;
+  }
+
+  /* ── Nav buttons — each has its own color ── */
+  .fex-btn {
+    display: flex; align-items: center;
+    gap: 12px; padding: 13px 15px;
+    border-radius: 18px; border: none;
+    background: transparent; cursor: pointer;
+    text-align: left; width: 100%;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.22s;
+    position: relative; overflow: hidden;
+  }
+  .fex-btn-inner { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+  .fex-btn-icon  { font-size: 22px; width: 28px; text-align: center; flex-shrink: 0; }
+  .fex-btn-lbl   { font-family: 'Baloo 2', cursive; font-size: 14px; font-weight: 800; color: #1a1a2e; line-height: 1.2; }
+
+  /* Jungle — blue */
+  .fex-btn-jungle:hover, .fex-btn-jungle.fex-active { background: #A8DDEF; box-shadow: 0 4px 16px rgba(59,174,232,0.30); }
+  /* Toddler — pink */
+  .fex-btn-toddler:hover, .fex-btn-toddler.fex-active { background: #F5C4D0; box-shadow: 0 4px 16px rgba(224,80,128,0.25); }
+  /* Library — yellow */
+  .fex-btn-library:hover, .fex-btn-library.fex-active { background: #FAE07A; box-shadow: 0 4px 16px rgba(247,196,22,0.30); }
+  /* Café — navy */
+  .fex-btn-cafe:hover, .fex-btn-cafe.fex-active { background: #4A6FA5; box-shadow: 0 4px 16px rgba(74,111,165,0.30); }
+  .fex-btn-cafe:hover .fex-btn-lbl,
+  .fex-btn-cafe.fex-active .fex-btn-lbl { color: #fff; }
+
+  /* ── Detail panel ── */
+  .fex-detail {
+    flex: 1; padding: 40px 48px;
+    position: relative; overflow: hidden;
+    transition: background 0.35s ease;
+  }
+  .fex-detail-blob {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    top: -60px; right: -60px;
+    opacity: 0.12; pointer-events: none;
+    transition: background 0.35s ease;
+  }
+
+  /* ── Panels ── */
+  .fex-panel { display: none; animation: fexIn 0.3s ease both; }
+  .fex-panel.fex-on { display: block; }
+  @keyframes fexIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+
+  /* ── Typography inside panel ── */
+  .fex-pill {
+    display: inline-block; padding: 5px 18px;
+    border-radius: 30px; font-size: 11px;
+    font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .pill-blue   { background: #A8DDEF; color: #105070; }
+  .pill-pink   { background: #F5C4D0; color: #7a1535; }
+  .pill-yellow { background: #FAE07A; color: #7a5000; }
+  .pill-navy   { background: #c8d6f0; color: #1a3060; }
+
+  .fex-panel-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800; color: #1a1a2e;
+    margin-bottom: 14px;
+  }
+  .fex-panel-desc {
+    font-size: 15px; color: #555;
+    line-height: 1.78; font-weight: 600;
+    margin-bottom: 22px; max-width: 540px;
+  }
+  .fex-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 11px;
+  }
+  .fex-list li {
+    display: flex; align-items: center;
+    gap: 12px; font-size: 14px;
+    font-weight: 700; color: #333;
+  }
+  .fex-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .fex-section { padding: 60px 40px; }
+    .fex-sidebar  { width: 200px; }
+    .fex-detail   { padding: 32px 32px; }
+  }
+  @media (max-width: 768px) {
+    .fex-section  { padding: 44px 18px; }
+    .fex-wrap     { flex-direction: column; min-height: auto; }
+    .fex-sidebar  {
+      width: 100%; flex-direction: row;
+      flex-wrap: wrap; gap: 8px;
+      border-right: none; border-bottom: 2px solid #d0eaf8;
+      padding: 14px 12px;
+    }
+    .fex-sidebar-lbl { display: none; }
+    .fex-btn {
+      flex: 1; min-width: 110px;
+      flex-direction: column; justify-content: center;
+      gap: 4px; padding: 10px 8px; text-align: center;
+      border-radius: 14px;
+    }
+    .fex-btn-inner { flex-direction: column; gap: 4px; }
+    .fex-btn-icon  { width: auto; font-size: 20px; }
+    .fex-btn-lbl   { font-size: 12px; }
+    .fex-detail    { padding: 24px 20px; }
+    .fex-panel-title { font-size: 22px; }
+    .fex-panel-desc  { font-size: 14px; }
+    .fex-detail-blob { width: 130px; height: 130px; top: -40px; right: -40px; }
+  }
+  @media (max-width: 400px) {
+    .fex-btn { min-width: 80px; }
+    .fex-btn-lbl { font-size: 11px; }
+  }
     </style>
 </head>
 <body>
@@ -2195,6 +2361,113 @@
     </div>
 </section>
 
+<section class="fex-section">
+    <p class="fex-eyebrow">Everything Kids Love</p>
+    <h2 class="fex-heading">Our Facilities</h2>
+
+    <div class="fex-wrap">
+
+        <!-- SIDEBAR -->
+        <aside class="fex-sidebar">
+            <div class="fex-sidebar-lbl">Explore</div>
+
+            <button class="fex-btn fex-btn-jungle fex-active" onclick="fexSwitch('jungle',this)">
+                <div class="fex-btn-inner">
+                    <span class="fex-btn-icon">🌴</span>
+                    <span class="fex-btn-lbl">Jungle Gym</span>
+                </div>
+            </button>
+
+            <button class="fex-btn fex-btn-toddler" onclick="fexSwitch('toddler',this)">
+                <div class="fex-btn-inner">
+                    <span class="fex-btn-icon">👶</span>
+                    <span class="fex-btn-lbl">Toddlers &amp; Infants</span>
+                </div>
+            </button>
+
+            <button class="fex-btn fex-btn-library" onclick="fexSwitch('library',this)">
+                <div class="fex-btn-inner">
+                    <span class="fex-btn-icon">📚</span>
+                    <span class="fex-btn-lbl">Library &amp; Activity</span>
+                </div>
+            </button>
+
+            <button class="fex-btn fex-btn-cafe" onclick="fexSwitch('cafe',this)">
+                <div class="fex-btn-inner">
+                    <span class="fex-btn-icon">☕</span>
+                    <span class="fex-btn-lbl">Café</span>
+                </div>
+            </button>
+        </aside>
+
+        <!-- DETAIL AREA -->
+        <div class="fex-detail" id="fexDetail" style="background:#EBF8FF;">
+            <div class="fex-detail-blob" id="fexBlob" style="background:#3BAEE8;"></div>
+
+            <!-- JUNGLE GYM -->
+            <div class="fex-panel fex-on" id="fex-jungle">
+                <span class="fex-pill pill-blue">Adventure Zone</span>
+                <h3 class="fex-panel-title">🌴 Jungle Gym</h3>
+                <p class="fex-panel-desc">
+                    The ultimate experience in physical play — climb, jump, crawl and slide through our vibrant, stimulating equipment. Your child's safety is at the forefront: equipment is checked and maintained every single day.
+                </p>
+                <ul class="fex-list">
+                    <li><span class="fex-dot" style="background:#3BAEE8;"></span>2-lane astro slide</li>
+                    <li><span class="fex-dot" style="background:#3BAEE8;"></span>Largest &amp; cleanest ball pool in Sri Lanka</li>
+                    <li><span class="fex-dot" style="background:#3BAEE8;"></span>Trampoline &amp; rope / cable bridges</li>
+                    <li><span class="fex-dot" style="background:#3BAEE8;"></span>Climbing wall &amp; crawling tube</li>
+                    <li><span class="fex-dot" style="background:#3BAEE8;"></span>Obstacle course and more!</li>
+                </ul>
+                <br>
+                <p class="fex-panel-desc">Your child’s safety is at the forefront of our entertainment facility, so we check and maintain our equipment on a daily basis, with strict guidelines for staff and patrons to ensure we continue to have a safe and hygienic environment.
+                    <br><br>
+
+                    Note: We are officially a <span style="font-weight: bold; color: var(--blue)">SOCKS ONLY FACILITY</span>. All Children and Adults entering the play area are required to wear socks at all times.  (socks to be brought with you, or can be purchased at the front desk)
+
+                </p>
+            </div>
+
+            <!-- TODDLERS -->
+            <div class="fex-panel" id="fex-toddler">
+                <span class="fex-pill pill-pink">Soft Play Zone</span>
+                <h3 class="fex-panel-title">👶 Toddlers &amp; Infants</h3>
+                <p class="fex-panel-desc">
+                    Let your toddler or infant explore freely in the specially designated soft play zone, allowing them to stimulate their senses in a secure environment using our sanitary, interactive toys.                </p>
+            </div>
+
+            <!-- LIBRARY -->
+            <div class="fex-panel" id="fex-library">
+                <span class="fex-pill pill-yellow">Creative Play</span>
+                <h3 class="fex-panel-title">📚 Library &amp; Activity Zones</h3>
+                <p class="fex-panel-desc">
+                    Let your imagination go wild in our creative play zone. These activity areas are ideal for both parent & child to spend some valuable time together, in a setting conducive to stimulate pretend play.
+                    <br><br>
+
+                    Read your child a book picked from our library or play tumble towers at the activity table. Your child can make imaginary Mac & Cheese for dinner whilst doing the washing in our play kitchen! Turn your child into a pretty princess or a rootin’ tootin’ cowboy in our wonderful dress up corner.
+                    <br><br>
+
+                    There are many more interactive opportunities at our new venue in Mount Lavinia, especially designed to keep the whole family entertained.
+                </p>
+
+            </div>
+
+            <!-- CAFÉ -->
+            <div class="fex-panel" id="fex-cafe">
+                <span class="fex-pill pill-navy">Food &amp; Drinks</span>
+                <h3 class="fex-panel-title">☕ Café</h3>
+                <p class="fex-panel-desc">
+                    Enjoy good food and fresh fruit drinks at our café, especially designed to keep an eye on your kids while they play and you relax enjoying some nice food. The cafe also host parties for walk in play customers so talk to our cafe and reception if you like us to cater to a surprise party for your kids.
+                    <br><br>
+
+                    Enjoy freshly made Burgers, Pasta, Sandwiches, Mongolian Rice, Spaghetti, Milkshakes, Juice, Faluda and many more tasty foods
+                </p>
+
+            </div>
+
+        </div><!-- /fex-detail -->
+    </div><!-- /fex-wrap -->
+</section>
+
 <div class="footer-bottom">
     &copy; 2025 Fun Factory Sri Lanka. All rights reserved.
 </div>
@@ -2224,6 +2497,24 @@
         if (panel.classList.contains('open')) toggleMobileNav();
       }
     });
+</script>
+
+<script>
+    var fexCfg = {
+      jungle:  { bg: '#EBF8FF', blob: '#3BAEE8' },
+      toddler: { bg: '#FEF0F4', blob: '#e05080' },
+      library: { bg: '#FFFBE6', blob: '#F7C416' },
+      cafe:    { bg: '#EEF2FA', blob: '#4A6FA5' }
+    };
+    function fexSwitch(key, btn) {
+      document.querySelectorAll('.fex-btn').forEach(function(b)    { b.classList.remove('fex-active'); });
+      document.querySelectorAll('.fex-panel').forEach(function(p)  { p.classList.remove('fex-on'); });
+      btn.classList.add('fex-active');
+      document.getElementById('fex-' + key).classList.add('fex-on');
+      var cfg = fexCfg[key];
+      document.getElementById('fexDetail').style.background = cfg.bg;
+      document.getElementById('fexBlob').style.background   = cfg.blob;
+    }
 </script>
 </body>
 </html>
