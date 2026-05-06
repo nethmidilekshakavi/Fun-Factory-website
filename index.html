@@ -1860,6 +1860,37 @@
     .fex-btn { min-width: 80px; }
     .fex-btn-lbl { font-size: 11px; }
   }
+        .svc-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.svc-text-content {
+    flex: 1;
+}
+
+.svc-image-wrapper {
+    flex: 0 0 auto;
+    width: 350px; /* adjust size as needed */
+}
+
+.svc-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px; /* optional: rounded corners */
+    object-fit: cover;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+    .svc-content-wrapper {
+        flex-direction: column;
+    }
+    .svc-image-wrapper {
+        width: 100%;
+    }
+}
     </style>
 </head>
 <body>
@@ -2325,38 +2356,54 @@
     <!-- Walk in Play Panel -->
     <div class="services-panel active" id="panel-wip">
         <div class="svc-panel-inner panel-pink">
-            <h3 class="svc-panel-title">Walk in Play</h3>
-            <p class="svc-desc">Enjoy our Walk in Play (WiP) facility. Simply pay per child, per hour and you will get billed at the end of your playtime.</p>
+            <div class="svc-content-wrapper">
+                <div class="svc-text-content">
+                    <h3 class="svc-panel-title">Walk in Play</h3>
+                    <p class="svc-desc">Enjoy our Walk in Play (WiP) facility. Simply pay per child, per hour and you will get billed at the end of your playtime.</p>
 
-            <div class="svc-rate-label rate-pink">WiP Rate</div>
-            <div class="svc-rate">Rs.700/- per child &amp; Rs.300/- per Adult per hour</div>
+                    <div class="svc-rate-label rate-pink">WiP Rate</div>
+                    <div class="svc-rate">Rs.700/- per child &amp; Rs.300/- per Adult per hour</div>
 
-            <ul class="svc-rules">
-                <li>Walk-in Play customers are welcomed up until 1 hour prior to closing time (last admission 7pm)</li>
-                <li>A parent or guardian (over 18 years old) must accompany children at all times</li>
-                <li>Clean socks must be worn at ALL times by children AND adults entering the play area</li>
-                <li>Fun Factory <a href="#" class="svc-link">Rules of Play</a> must be adhered to at all times</li>
-            </ul>
+                    <ul class="svc-rules">
+                        <li>Walk-in Play customers are welcomed up until 1 hour prior to closing time (last admission 7pm)</li>
+                        <li>A parent or guardian (over 18 years old) must accompany children at all times</li>
+                        <li>Clean socks must be worn at ALL times by children AND adults entering the play area</li>
+                        <li>Fun Factory <a href="#" class="svc-link">Rules of Play</a> must be adhered to at all times</li>
+                    </ul>
+                </div>
+
+                <div class="svc-image-wrapper">
+                    <img src="images/WhatsApp%20Image%202026-03-30%20at%203.27.39%20PM.jpeg" alt="Walk in Play" class="svc-image" />
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Drop N Shop Panel -->
     <div class="services-panel" id="panel-dns">
         <div class="svc-panel-inner panel-green">
-            <h3 class="svc-panel-title">Drop N Shop</h3>
-            <p class="svc-desc">This service is available for parents whose kids are aged 4–11 years. Younger children will be allowed for the Drop N Shop (DNS) service at the discretion of our staff, depending on availability.</p>
-            <p class="svc-desc">Fun Factory DNS enables you to have some much needed retail therapy, do essential grocery shopping in peace or for you to simply enjoy a bit of quiet time, while your kids can have a blast at Fun Factory under the supervision of our trained staff.</p>
-            <p class="svc-desc">DNS is economical too, at just Rs.1000/- per child, per hour of stay. Please note that Fun Factory staff will provide a free bottle of water for each child on admission for DNS. See <a href="#" class="svc-link">Rules and Regulations</a> section for full details.</p>
+            <div class="svc-content-wrapper">
+                <div class="svc-text-content">
+                    <h3 class="svc-panel-title">Drop N Shop</h3>
+                    <p class="svc-desc">This service is available for parents whose kids are aged 4–11 years. Younger children will be allowed for the Drop N Shop (DNS) service at the discretion of our staff, depending on availability.</p>
+                    <p class="svc-desc">Fun Factory DNS enables you to have some much needed retail therapy, do essential grocery shopping in peace or for you to simply enjoy a bit of quiet time, while your kids can have a blast at Fun Factory under the supervision of our trained staff.</p>
+                    <p class="svc-desc">DNS is economical too, at just Rs.1000/- per child, per hour of stay. Please note that Fun Factory staff will provide a free bottle of water for each child on admission for DNS. See <a href="#" class="svc-link">Rules and Regulations</a> section for full details.</p>
 
-            <div class="svc-rate-label rate-green">DNS Rate</div>
-            <div class="svc-rate">Rs.1000/- per child, per hour of stay</div>
+                    <div class="svc-rate-label rate-green">DNS Rate</div>
+                    <div class="svc-rate">Rs.1000/- per child, per hour of stay</div>
 
-            <ul class="svc-rules">
-                <li>Drop N Shop customers are welcome up until 2 hours prior to closing time</li>
-                <li>Clean socks must be worn at ALL times by children using the play area</li>
-                <li>Fun Factory <a href="#" class="svc-link">Rules of Play</a> must be adhered to at all times</li>
-                <li>Drop N Shop facility may only be utilized for up to a maximum of 4 hours per child</li>
-            </ul>
+                    <ul class="svc-rules">
+                        <li>Drop N Shop customers are welcome up until 2 hours prior to closing time</li>
+                        <li>Clean socks must be worn at ALL times by children using the play area</li>
+                        <li>Fun Factory <a href="#" class="svc-link">Rules of Play</a> must be adhered to at all times</li>
+                        <li>Drop N Shop facility may only be utilized for up to a maximum of 4 hours per child</li>
+                    </ul>
+                </div>
+
+                <div class="svc-image-wrapper">
+                    <img src="images/651223192_1474302731405926_2056156611684067743_n.jpg  " alt="Drop N Shop" class="svc-image" />
+                </div>
+            </div>
         </div>
     </div>
 </section>
