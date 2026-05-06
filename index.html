@@ -364,28 +364,48 @@
         .img-s3 { width: 50%; height: 50%; bottom: -24%; right: -16%; z-index: 1; }
 
         /* ════ STATS BAR ════ */
-        .stats-bar {
-          display: flex;
-          justify-content: center;
-          gap: 40px;
-          padding: 28px 40px;
-          border-bottom: 3px solid var(--light-blue-bg);
-          flex-wrap: wrap;
-          position: relative;
-          z-index: 5;
-        }
-        .stat { text-align: center; }
-        .stat-number {
-          font-family: 'Fredoka One', cursive;
-          font-size: clamp(28px, 4vw, 42px);
-          color: var(--dark-blue);
-          line-height: 1;
-        }
-        .stat-label {
-          font-size: 12px; font-weight: 700;
-          color: #888; text-transform: uppercase;
-          letter-spacing: 1px; margin-top: 4px;
-        }
+
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 28px 40px;
+  border-bottom: 3px solid var(--light-blue-bg);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+}
+.stat { text-align: center; }
+.stat-number {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--dark-blue);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 12px; font-weight: 700;
+  color: #888; text-transform: uppercase;
+  letter-spacing: 1px; margin-top: 4px;
+}
+.stats-bar .img-ss {
+  height: 130px;
+  width: auto;
+  object-fit: contain;
+  position: static;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.3s;
+  animation: mascotFloat 4s ease-in-out infinite;
+}
+.stats-bar .img-s1:hover { transform: scale(1.08); }
+
+@media (max-width: 768px) {
+  .stats-bar { gap: 20px; padding: 20px 16px; }
+  .stat-number { font-size: 28px; }
+  .stat-label { font-size: 11px; }
+  .stats-bar .img-s1 { height: 55px; }
+}
 
         /* ════ SECTION ════ */
         .section {
@@ -711,7 +731,7 @@
         .who-we-are {
           position: relative; z-index: 5;
           padding: 80px;
-          background: rgba(255,255,255,0.75);
+
         }
         .wwa-eyebrow {
           display: flex; align-items: center; gap: 12px;
@@ -1651,7 +1671,7 @@
   margin-top: 5%;
   right:8%;
   animation: float 4s ease-in-out infinite;
-  border-radius: 22px;
+  border-radius: 30px;
   overflow: hidden;
 
 }
@@ -1764,7 +1784,7 @@
     </div>
 
     <div class="img-stagger-wrap">
-        <img class="img-s1" src="images/635210809_1450722320430634_2613594833364158350_n.jpg" alt="Fun Factory">
+        <img class="img-s1" src="images/home.jpg" alt="Fun Factory">
     </div>
 </section>
 
@@ -1774,6 +1794,7 @@
     <div class="stat"><div class="stat-number">2</div><div class="stat-label">Locations</div></div>
     <div class="stat"><div class="stat-number">0–11</div><div class="stat-label">Age Range</div></div>
     <div class="stat"><div class="stat-number">7</div><div class="stat-label">Days a Week</div></div>
+    <img class="img-ss" src="images/0376e8b9e8e3e782802c617c98f5de07-removebg-preview.png" alt="Fun Factory">
 </div>
 
 <!-- FACILITIES -->
