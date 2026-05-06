@@ -2101,6 +2101,185 @@
     .ff-time-badge { align-items: flex-start; }
     .ff-card-mascot { width: 65px; height: 65px; }
   }
+
+.ff-gallery {
+    font-family: 'Nunito', sans-serif;
+    padding: 3.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ff-gallery::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .ff-gallery::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .ff-gallery-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ff-gallery-pill {
+    display: inline-block;
+    border: 2px solid #b0c4de;
+    border-radius: 50px;
+    padding: 6px 28px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+    background: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.2rem;
+  }
+
+  .ff-gallery-title {
+    font-family: 'Cherry Bomb', cursive;
+    font-size: clamp(30px, 4.5vw, 52px);
+    color: #1a1a2e;
+    margin: 0 0 0.3rem;
+    line-height: 1.1;
+  }
+
+  .ff-gallery-title span { color: #FF6F00; }
+
+  .ff-gallery-sub {
+    font-size: 15px;
+    color: #888;
+    margin: 0;
+  }
+
+  .ff-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ff-photo-card {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease;
+    background: #e0e0e0;
+    border: 3px solid transparent;
+  }
+
+  .ff-photo-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border-color: #FFD600;
+  }
+
+  .ff-photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .ff-photo-card:hover img {
+    transform: scale(1.08);
+  }
+
+  .ff-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+  }
+
+  .ff-photo-card:hover .ff-photo-overlay {
+    opacity: 1;
+  }
+
+  .ff-photo-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .ff-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .ff-lightbox.active { display: flex; }
+
+  .ff-lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 16px;
+    object-fit: contain;
+    animation: zoomIn 0.25s ease;
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+
+  .ff-lightbox-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+    background: none;
+    border: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+
+  .ff-lightbox-close:hover { opacity: 1; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ff-photo-card {
+    animation: fadeInUp 0.5s ease both;
+  }
+
+  @media (max-width: 500px) {
+    .ff-photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
     </style>
 </head>
 <body>
@@ -2796,6 +2975,80 @@
         🌟 <span>Public holidays?</span> We're always open on public holidays — even on Mondays &amp; Tuesdays!
     </div>
 </section>
+
+
+<section class="ff-gallery">
+    <div class="ff-gallery-header">
+        <p class="ff-section-label" style="color: #E63329">Our Gallery</p>
+        <h2 class="ff-gallery-title">Fun <span style="color: #E63329">Moments</span></h2>
+        <p class="ff-gallery-sub">Every visit creates a memory worth keeping!</p>
+    </div>
+
+    <div class="ff-photo-grid" id="photoGrid">
+
+        <!-- Photo 1 — src eka change karanna -->
+        <div class="ff-photo-card" style="animation-delay:0.05s" onclick="openLight(this)">
+            <img src="images/gallary/524576950_1270896615079873_7518901648730951546_n.jpg" alt="Ball Pit Fun">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Ball Pit Fun</span></div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="ff-photo-card" style="animation-delay:0.12s" onclick="openLight(this)">
+            <img src="images/gallary/577223583_1363938599109007_7036169206263250779_n.jpg" alt="Jungle Gym">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Jungle Gym</span></div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="ff-photo-card" style="animation-delay:0.19s" onclick="openLight(this)">
+            <img src="images/gallary/601847943_1401829331986600_5059881363380454870_n.jpg" alt="Climbing Wall">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Climbing Wall</span></div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="ff-photo-card" style="animation-delay:0.26s" onclick="openLight(this)">
+            <img src="images/gallary/626417424_1436372195198980_44676054940617499_n.jpg" alt="Christmas Party">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Christmas Party</span></div>
+        </div>
+
+        <!-- Photo 5 — tawa photos thiyanawa nam methana copy karanna -->
+        <div class="ff-photo-card" style="animation-delay:0.33s" onclick="openLight(this)">
+            <img src="images/gallary/656483779_1482635647239301_2346744738400477081_n.jpg" alt="Photo 5">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Fun Moment</span></div>
+        </div>
+        <div class="ff-photo-card" style="animation-delay:0.33s" onclick="openLight(this)">
+            <img src="images/gallary/657140224_1485259640310235_6969836983059133247_n.jpg" alt="Photo 5">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Fun Moment</span></div>
+        </div>
+        <div class="ff-photo-card" style="animation-delay:0.33s" onclick="openLight(this)">
+            <img src="images/gallary/672147478_1502398248596374_4537826343622644872_n.jpg" alt="Photo 5">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Fun Moment</span></div>
+        </div>
+        <div class="ff-photo-card" style="animation-delay:0.33s" onclick="openLight(this)">
+            <img src="images/gallary/688207523_1517947567041442_6649286349638944485_n.jpg" alt="Photo 5">
+            <div class="ff-photo-overlay"><span class="ff-photo-label">Fun Moment</span></div>
+        </div>
+
+    </div>
+</section>
+
+<div class="ff-lightbox" id="lightbox" onclick="closeLight()">
+    <button class="ff-lightbox-close" onclick="closeLight()">&times;</button>
+    <img class="ff-lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+
+
+
+<script>
+    function openLight(card) {
+      var img = card.querySelector('img');
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLight() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+</script>
 
 <script>
     function loadImage(input, mascotId) {
