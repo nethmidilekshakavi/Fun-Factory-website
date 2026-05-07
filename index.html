@@ -2614,15 +2614,17 @@
   .ff-footer-kids { padding: 0 18px; }
   .ff-footer-kid { width: 110px; }
 }
-        /* ════ FAN SLIDER ════ */
+/* ════ FAN SLIDER ════ */
 .fan-slider-outer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 18px;
   animation: float 4s ease-in-out infinite;
+  width: 100%;
 }
 
+/* Desktop scene */
 .fan-scene {
   position: relative;
   width: 520px;
@@ -2630,6 +2632,7 @@
   perspective: 1200px;
 }
 
+/* Cards */
 .fan-card {
   position: absolute;
   width: 700px;
@@ -2645,11 +2648,12 @@
 }
 
 .fan-card img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  display: block;
 }
 
+/* Controls */
 .fan-controls {
   display: flex;
   gap: 12px;
@@ -2660,28 +2664,81 @@
 .fan-arrow {
   background: rgba(255,255,255,0.88);
   border: none;
-  width: 36px; height: 36px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   font-size: 16px;
   cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-  color: #1A5FA8; font-weight: 700;
+  color: #1A5FA8;
+  font-weight: 700;
   transition: all 0.2s;
 }
-.fan-arrow:hover { background: #fff; transform: scale(1.1); }
 
-.fan-dots { display: flex; gap: 7px; }
-.fan-dot {
-  width: 9px; height: 9px; border-radius: 50%;
-  background: rgba(26,95,168,0.25);
-  border: none; cursor: pointer; transition: all 0.3s;
+.fan-arrow:hover {
+  background: #fff;
+  transform: scale(1.1);
 }
-.fan-dot.active { background: #1A5FA8; width: 22px; border-radius: 5px; }
 
+.fan-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.fan-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(26,95,168,0.25);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.fan-dot.active {
+  background: #1A5FA8;
+  width: 22px;
+  border-radius: 5px;
+}
+
+/* ════ MOBILE RESPONSIVE ════ */
 @media (max-width: 768px) {
-  .fan-scene { width: 100%; height: 280px; }
-  .fan-card { width: 240px; height: 220px; }
+
+  .fan-scene {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+  }
+
+  .fan-card {
+    width: 85%;
+    height: 240px;
+    left: 54%;
+    top: 0;
+    border-radius: 16px;
+  }
+
+  .fan-slider-outer {
+    gap: 12px;
+  }
+
+  .fan-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .fan-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .fan-dot.active {
+    width: 18px;
+  }
 }
     </style>
 </head>
