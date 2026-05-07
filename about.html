@@ -702,6 +702,213 @@ nav {
           .tnc-grid { grid-template-columns: 1fr; }
           .hours-table th, .hours-table td { padding: 12px 14px; font-size: 13px; }
         }
+               /* ════ FOOTER ════ */
+.ff-footer {
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+  border-top: 2px solid #e8f0f8;
+  position: relative;
+  z-index: 5;
+}
+
+.ff-footer-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 0.8fr 1.1fr;
+  gap: 40px;
+  padding: 56px 60px 40px;
+  max-width: 1800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ff-foot-col h4 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 18px; font-weight: 800;
+  color: #1a1a2e; margin: 0 0 16px;
+}
+
+.ff-foot-col p {
+  font-size: 13.5px; color: #555;
+  font-weight: 600; line-height: 1.75;
+}
+
+.ff-foot-col ul {
+  list-style: disc;
+  padding-left: 18px; margin: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.ff-foot-col ul li a {
+  font-size: 13.5px; color: #555;
+  font-weight: 600; text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ff-foot-col ul li a:hover { color: #1A5FA8; }
+
+/* About col */
+.ff-footer-logo {
+  width: 140px; height: auto;
+  display: block; margin: 14px 0 12px;
+}
+
+.ff-about-party {
+  font-size: 13px; color: #555;
+  font-weight: 600; margin-top: 14px;
+  line-height: 1.65;
+  border-top: 1px dashed #dde;
+  padding-top: 12px;
+}
+
+/* Contact */
+.ff-contact-item {
+  display: flex; align-items: flex-start;
+  gap: 9px; margin-bottom: 11px;
+}
+
+.ff-contact-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #3BAEE8;
+  margin-top: 7px; flex-shrink: 0;
+}
+
+.ff-contact-item a {
+  color: #1A5FA8; font-weight: 700;
+  font-size: 13.5px; text-decoration: underline;
+}
+
+.ff-contact-item span.txt {
+  font-size: 13px; color: #555;
+  font-weight: 600; line-height: 1.65;
+}
+
+/* Location cards */
+.ff-loc-card {
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.ff-loc-card.yellow {
+  background: #FFF9C4;
+  border-left: 4px solid #FFD600;
+}
+
+.ff-loc-card.blue {
+  background: #E3F2FD;
+  border-left: 4px solid #3BAEE8;
+}
+
+.ff-loc-name {
+  font-family: 'Baloo 2', cursive;
+  font-size: 15px; font-weight: 800;
+  color: #1a1a2e; margin-bottom: 3px;
+}
+
+.ff-loc-addr {
+  font-size: 12.5px; color: #444;
+  font-weight: 600; margin-bottom: 3px;
+}
+
+.ff-loc-tel {
+  font-size: 12.5px; color: #666;
+  font-weight: 700;
+}
+
+/* Subscribe */
+.ff-subscribe-wrap { margin-top: 18px; }
+
+.ff-subscribe-wrap h5 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 17px; font-weight: 800;
+  color: #1a1a2e; margin: 0 0 6px;
+}
+
+.ff-subscribe-wrap p {
+  font-size: 13px; color: #555;
+  font-weight: 600; line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.ff-sub-input {
+  width: 100%; padding: 11px 14px;
+  border: 2px solid #E63329;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px; color: #333;
+  outline: none; box-sizing: border-box;
+  margin-bottom: 9px;
+}
+
+.ff-sub-input:focus { border-color: #1A5FA8; }
+
+.ff-sub-btn {
+  width: 100%;
+  background: #1A3A6B;
+  color: #fff; border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 1.5px; cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ff-sub-btn:hover { background: #1A5FA8; }
+
+/* Kids images in footer */
+.ff-footer-kids {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  padding: 0 60px 0;
+  pointer-events: none;
+}
+
+.ff-footer-kid {
+  width: 160px; height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Bottom bar */
+.ff-footer-bottom {
+  background: #f4f8fc;
+  border-top: 1px solid #dde8f5;
+  padding: 16px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ff-footer-bottom span,
+.ff-footer-bottom a {
+  font-size: 13px; color: #888;
+  font-weight: 600; text-decoration: none;
+}
+
+.ff-footer-bottom a:hover { color: #1A5FA8; }
+.ff-footer-bottom .heart { color: #E63329; }
+.ff-footer-bottom-links { display: flex; gap: 22px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ff-footer-main { grid-template-columns: 1fr 1fr; gap: 30px; padding: 44px 40px 30px; }
+  .ff-footer-bottom { padding: 14px 40px; }
+  .ff-footer-kids { padding: 0 40px; }
+}
+
+@media (max-width: 768px) {
+  .ff-footer-main { grid-template-columns: 1fr; gap: 28px; padding: 36px 18px 24px; }
+  .ff-footer-bottom { padding: 14px 18px; flex-direction: column; text-align: center; }
+  .ff-footer-bottom-links { justify-content: center; }
+  .ff-footer-kids { padding: 0 18px; }
+  .ff-footer-kid { width: 110px; }
+}
     </style>
 </head>
 <body>
@@ -1069,57 +1276,121 @@ nav {
 </section>
 
 <!-- FOOTER -->
-<footer>
-    <div class="footer-grid">
-        <div class="footer-brand">
-            <span class="logo-text">Fun <span style="color:var(--yellow)">Factory</span></span>
-            <p>Sri Lanka's first supervised, totally air-conditioned indoor playground for children aged 0–11. Located in Nawala and Mount Lavinia.</p>
-            <div class="footer-social">
-                <a class="social-btn" href="#">📘</a>
-                <a class="social-btn" href="#">📸</a>
-                <a class="social-btn" href="#">▶️</a>
-                <a class="social-btn" href="#">🎵</a>
+<footer class="ff-footer">
+
+    <div class="ff-footer-main">
+
+        <!-- COL 1: About -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">About</h4>
+            <p style="font-size:15px;">Fun Factory is Sri Lanka's premier supervised indoor playground for children aged 0–11 years. With world-class facilities in Nawala and Mount Lavinia, we deliver the ultimate kids play experience in a safe, clean and exciting environment.</p>
+
+            <img class="ff-footer-logo" src="images/logo.png" alt="Fun Factory Logo">
+
+            <p class="ff-about-party" style="font-size:15px;">
+                🎉 <strong>Party Bookings</strong><br>
+                Parties can be booked any day of the week. Call us or visit our website!
+            </p>
+        </div>
+
+        <!-- COL 2: Contact -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Contact Us</h4>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <br>
+                <span class="txt">
+          <a href="tel:0112802656" style="font-size:15px;">011 2802656</a><br>
+          <a href="tel:0773603777" style="font-size:15px;">077 3603777</a>
+        </span>
+            </div>
+            <div class="ff-contact-item">
+                <span class="txt">&nbsp;</span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt"><a href="mailto:info@funfactory.lk" style="font-size:15px;" >info@funfactory.lk</a></span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt" style="font-size:15px;">
+          573 Nawala Road, Rajagiriya<br>
+          3rd Floor, Mount City Building,<br>
+          143 1/2 Galle Rd, Mount Lavinia
+        </span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt" style="font-size:15px;">
+          Mon–Fri: 9am–8pm<br>
+          Sat–Sun &amp; Public Holidays: 9am–8pm
+        </span>
             </div>
         </div>
-        <div class="footer-col">
-            <h4>Quick Links</h4>
+
+        <!-- COL 3: Quick Links -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Quick Links</h4>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Facilities</a></li>
-                <li><a href="#">Birthday Parties</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#" style="font-size:15px;">Jungle Gym</a></li>
+                <li><a href="#" style="font-size:15px;">Toddlers &amp; Infants</a></li>
+                <li><a href="#" style="font-size:15px;">Library &amp; Activity Zones</a></li>
+                <li><a href="#" style="font-size:15px;">Cafe</a></li>
+                <li><a href="#" style="font-size:15px;">Membership</a></li>
+                <li><a href="#" style="font-size:15px;">Photo Album</a></li>
+                <li><a href="#" style="font-size:15px;">Event Calendar</a></li>
+                <li><a href="#" style="font-size:15px;">Contact Us</a></li>
+                <li><a href="#" style="font-size:15px;">Terms &amp; Conditions</a></li>
             </ul>
         </div>
-        <div class="footer-col">
-            <h4>Our Locations</h4>
-            <ul>
-                <li><a href="#">Nawala Branch</a></li>
-                <li><a href="#">Mount Lavinia Branch</a></li>
-            </ul>
-            <h4 style="margin-top:20px">Hours</h4>
-            <ul>
-                <li><a href="#">Wed – Sun: 10am – 8pm</a></li>
-                <li><a href="#">Public &amp; School Holidays</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Contact Us</h4>
-            <ul>
-                <li><a href="#">📞 Nawala: 0112 862 656</a></li>
-                <li><a href="#">📞 0773 603 777</a></li>
-                <li><a href="#">📞 Mt. Lavinia: 0112 761 626</a></li>
-            </ul>
-            <div style="margin-top:16px;font-size:13px;color:#888;line-height:1.7">
-                * We may occasionally close for private events. Check our website or call ahead.
+
+        <!-- COL 4: Locations + Subscribe -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Our Locations</h4>
+
+            <div class="ff-loc-card yellow">
+                <div class="ff-loc-name" style="font-size:20px;">Nawala Branch</div>
+                <div class="ff-loc-addr" style="font-size:15px;">573, Nawala Road, Rajagiriya</div>
+                <div class="ff-loc-tel" style="font-size:15px;">011 286 2656 · 077 360 3777</div>
+            </div>
+
+            <div class="ff-loc-card blue">
+                <div class="ff-loc-name" style="font-size:20px;">Mount Lavinia Branch</div>
+                <div class="ff-loc-addr" style="font-size:15px;">3rd Floor, Mount City Building, Galle Road</div>
+                <div class="ff-loc-tel" style="font-size:15px;">011 588 2656 · 077 360 3777</div>
+            </div>
+
+            <div class="ff-subscribe-wrap">
+                <h5 style="font-size:15px;">Subscribe</h5>
+                <p style="font-size:15px;">Subscribe here with your email to get the very latest news about FUN FACTORY</p>
+                <input class="ff-sub-input" type="email" placeholder="Email Address" style="font-size:15px;">
+                <button class="ff-sub-btn" style="font-size:15px;">SUBMIT</button>
             </div>
         </div>
+
     </div>
-    <div class="footer-bottom">
-        <span>© 2024 Fun Factory Sri Lanka. All rights reserved.</span>
-        <span>Terms &amp; Conditions | Privacy Policy</span>
+
+    <!--    &lt;!&ndash; Kids images middle &ndash;&gt;-->
+    <!--    <div class="ff-footer-kids">-->
+    <!--        <img class="ff-footer-kid" src="images/footer/img.png" alt="Girl with hoop">-->
+    <!--        <img class="ff-footer-kid" src="images/footer-boy.png" alt="Boy with blocks">-->
+    <!--    </div>-->
+
+    <!-- Bottom bar -->
+    <div class="ff-footer-bottom">
+        <span>© 2025 Fun Factory — All Rights Reserved. Website by Ribelz.</span>
+        <div class="ff-footer-bottom-links">
+            <a href="#">Site Map</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+        </div>
+        <span><span class="heart">♥</span> Made for kids, by people who love them</span>
     </div>
+
 </footer>
 
 </body>
