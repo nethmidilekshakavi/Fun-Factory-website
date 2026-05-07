@@ -2712,12 +2712,13 @@
     </div>
 
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Facilities</a></li>
-        <li><a href="#">Services</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#Facilities">Facilities</a></li>
+        <li><a href="#services-section">Services</a></li>
         <li><a href="#">Party Packages</a></li>
         <li><a href="#">Membership</a></li>
-        <li><a href="#">Photo Album</a></li>
+        <li><a href="#ff-gallery">Photo Album</a></li>
         <li><a href="#">Contact Us</a></li>
         <li><a href="#" class="btn-book-nav">Book Now</a></li>
     </ul>
@@ -2740,6 +2741,7 @@
     </div>
     <ul class="mobile-nav-links">
         <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">🏠</span> Home</a></li>
+        <li><a href="about.html" onclick="toggleMobileNav()"><span class="nav-icon">🏠</span> About</a></li>
         <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">🛝</span> Facilities</a></li>
         <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">⭐</span> Services</a></li>
         <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">🎂</span> Party Packages</a></li>
@@ -2822,7 +2824,7 @@
 </div>
 
 <!-- FACILITIES -->
-<section class="section" style="background:rgba(255,255,255,0.7);">
+<section class="section" style="background:rgba(255,255,255,0.7);" id="Facilities">
     <div class="facilities-grid">
         <div class="fac-col">
             <div class="fac-card fac-blue">
@@ -3148,7 +3150,7 @@
 </section>
 
 <!-- SERVICES SECTION -->
-<section class="services-section">
+<section class="services-section" id="services-section">
     <p class="services-eyebrow">Our Services</p>
     <h2 class="services-heading">What We Offer</h2>
 
@@ -3399,7 +3401,7 @@
 </section>
 
 
-<section class="ff-gallery">
+<section class="ff-gallery" id="ff-gallery">
     <div class="ff-gallery-header">
         <p class="ff-section-label" style="color: #E63329">Our Gallery</p>
         <h2 class="ff-gallery-title">Fun <span style="color: #E63329">Moments</span></h2>
@@ -3805,6 +3807,89 @@
   render();
   fanStart();
 })();
+</script>
+<!-- BODY CLOSING TAG EKATA ISSERAHAMA DAPAN -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        /* =========================================
+           REVEAL ANIMATION
+        ========================================= */
+
+        const revealElements = document.querySelectorAll(
+            '.hero-content, .fac-card, .feature-item, .hero2-left, .hero2-right, .wwa-card, .event-card, .services-panel, .fex-panel, .ff-card, .ff-photo-card, .location-card, .party-cta-banner, .ff-foot-col'
+        );
+
+        revealElements.forEach((el, index) => {
+
+            if(index % 5 === 0){
+                el.classList.add('reveal-left');
+            }
+            else if(index % 4 === 0){
+                el.classList.add('reveal-right');
+            }
+            else if(index % 3 === 0){
+                el.classList.add('reveal-scale');
+            }
+            else{
+                el.classList.add('reveal');
+            }
+
+        });
+
+        const observer = new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.12
+        });
+
+        revealElements.forEach(el=>{
+            observer.observe(el);
+        });
+
+        /* =========================================
+           NAVBAR SCROLL EFFECT
+        ========================================= */
+
+        window.addEventListener('scroll', function(){
+
+            const nav = document.querySelector('nav');
+
+            if(window.scrollY > 40){
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+        });
+
+        /* =========================================
+           PARALLAX EFFECT
+        ========================================= */
+
+        window.addEventListener('scroll', function(){
+
+            const scroll = window.pageYOffset;
+
+            document.querySelectorAll('.bubble').forEach((bubble, i)=>{
+                bubble.style.transform =
+                    `translateY(${scroll * (0.04 + i * 0.01)}px)`;
+            });
+
+            document.querySelectorAll('.bubble-extra').forEach((bubble, i)=>{
+                bubble.style.transform =
+                    `translateY(${scroll * (0.06 + i * 0.02)}px)`;
+            });
+
+        });
+
+    });
 </script>
 </body>
 </html>
