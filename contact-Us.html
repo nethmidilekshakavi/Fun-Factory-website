@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — Fun Factory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #3BAEE8;
+            --yellow: #F7C416;
+            --orange: #F47920;
+            --red: #E63329;
+            --dark-blue: #1A5FA8;
+            --light-blue-bg: #D6EFFA;
+            --white: #ffffff;
+            --text-dark: #222;
+            --bubble1: rgba(100,181,246,0.25);
+            --bubble2: rgba(252,228,236,0.35);
+            --bubble3: rgba(255,241,118,0.25);
+            --bubble4: rgba(165,214,167,0.25);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ════ BUBBLES BG ════ */
+        .bubbles-bg {
+            position: fixed; inset: 0;
+            pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        .bubble {
+            position: absolute; border-radius: 50%;
+            animation: floatBubble linear infinite; opacity: 0;
+        }
+        .bubble:nth-child(1)  { width:220px;height:220px;top:5%;left:2%;    background:var(--bubble1);animation-duration:18s;animation-delay:0s;   }
+        .bubble:nth-child(2)  { width:160px;height:160px;top:15%;right:8%;  background:var(--bubble2);animation-duration:22s;animation-delay:2s;   }
+        .bubble:nth-child(3)  { width:280px;height:280px;top:55%;left:70%;  background:var(--bubble3);animation-duration:26s;animation-delay:4s;   }
+        .bubble:nth-child(4)  { width:120px;height:120px;top:75%;left:10%;  background:var(--bubble4);animation-duration:20s;animation-delay:1s;   }
+        .bubble:nth-child(5)  { width:190px;height:190px;top:40%;right:2%;  background:var(--bubble1);animation-duration:24s;animation-delay:3s;   }
+        .bubble:nth-child(6)  { width:100px;height:100px;top:85%;right:25%; background:var(--bubble2);animation-duration:19s;animation-delay:5s;   }
+        .bubble:nth-child(7)  { width:240px;height:240px;top:30%;left:38%;  background:var(--bubble3);animation-duration:30s;animation-delay:6s;   }
+        .bubble:nth-child(8)  { width:180px;height:180px;top:60%;left:50%;  background:var(--bubble4);animation-duration:23s;animation-delay:2.5s; }
+        .bubble:nth-child(9)  { width:130px;height:130px;top:10%;left:45%;  background:var(--bubble2);animation-duration:21s;animation-delay:7s;   }
+        .bubble:nth-child(10) { width:200px;height:200px;top:80%;right:5%;  background:var(--bubble1);animation-duration:25s;animation-delay:1.5s; }
+        @keyframes floatBubble {
+            0%   { opacity:0; transform:translateY(30px) scale(0.9); }
+            10%  { opacity:1; }
+            90%  { opacity:1; }
+            100% { opacity:0; transform:translateY(-40px) scale(1.05); }
+        }
+
+        /* ════ TOP BANNER ════ */
+        .top-banner {
+            background: var(--blue);
+            color: white;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 200;
+        }
+        .top-banner span { color: var(--yellow); }
+        .top-banner .divider { opacity: 0.5; color: #fff; }
+
+        /* ════ NAVBAR ════ */
+        nav {
+            background: #D6EFFA;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 150;
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 4px 24px rgba(26,95,168,0.15); }
+        .logo img { height: 90px; width: auto; display: block; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { background: rgba(26,95,168,0.1); color: var(--dark-blue); }
+        .nav-links a.active { color: var(--dark-blue); background: rgba(26,95,168,0.1); }
+        .btn-book-nav {
+            background: var(--yellow) !important;
+            color: var(--text-dark) !important;
+            font-weight: 800 !important;
+            padding: 10px 20px !important;
+            border-radius: 30px !important;
+            box-shadow: 0 4px 0 #c9980e;
+            margin-left: 8px;
+        }
+        .btn-book-nav:hover {
+            background: #f0b800 !important;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #c9980e !important;
+        }
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 10px;
+            transition: background 0.2s;
+            z-index: 160;
+        }
+        .hamburger-btn:hover { background: rgba(26,95,168,0.1); }
+        .hamburger-btn .bar {
+            width: 26px; height: 2.5px;
+            background: #1A5FA8;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+            display: block;
+        }
+        .hamburger-btn.open .bar:nth-child(1) { transform: rotate(45deg) translate(5.5px, 5.5px); }
+        .hamburger-btn.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger-btn.open .bar:nth-child(3) { transform: rotate(-45deg) translate(5.5px, -5.5px); }
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 170;
+            backdrop-filter: blur(2px);
+        }
+        .mobile-menu-overlay.open { display: block; }
+        .mobile-nav-panel {
+            position: fixed;
+            top: 0; right: -300px;
+            width: 280px; height: 100vh;
+            background: #fff;
+            z-index: 180;
+            transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: -6px 0 32px rgba(0,0,0,0.18);
+            overflow-y: auto;
+            display: flex; flex-direction: column;
+        }
+        .mobile-nav-panel.open { right: 0; }
+        .mobile-nav-header {
+            background: linear-gradient(135deg, #1A5FA8, #3BAEE8);
+            padding: 20px 20px 18px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .mobile-nav-logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 22px; color: #fff;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .mobile-nav-logo span { color: var(--yellow); }
+        .mobile-nav-close {
+            background: rgba(255,255,255,0.2);
+            border: none; color: #fff;
+            width: 32px; height: 32px;
+            border-radius: 50%; font-size: 18px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .mobile-nav-links { list-style: none; padding: 10px 0; flex: 1; }
+        .mobile-nav-links li a {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 22px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700; font-size: 15.5px;
+            color: #222; text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.18s;
+        }
+        .mobile-nav-links li a:hover { background: #EEF7FF; border-left-color: #1A5FA8; color: #1A5FA8; }
+        .nav-icon { font-size: 18px; width: 26px; text-align: center; flex-shrink: 0; }
+        .mobile-nav-divider { height: 1px; background: #eef; margin: 6px 22px; }
+        .mobile-book-btn {
+            margin: 14px 18px 20px;
+            display: block;
+            background: var(--yellow); color: #222;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800; font-size: 16px;
+            padding: 14px; border-radius: 30px;
+            text-align: center; text-decoration: none;
+            box-shadow: 0 4px 0 #c9980e;
+        }
+
+        /* ════ HERO BANNER ════ */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #2a7ec8 100%);
+            padding: 64px 60px 50px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+            overflow: hidden;
+        }
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            top: -150px; left: -100px;
+            pointer-events: none;
+        }
+        .contact-hero::after {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            bottom: -100px; right: -60px;
+            pointer-events: none;
+        }
+        .contact-hero .eyebrow {
+            font-size: 13px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--yellow); margin-bottom: 12px;
+            position: relative; z-index: 1;
+        }
+        .contact-hero h1 {
+            font-family: 'Cherry Bomb', cursive;
+            font-size: clamp(42px, 7vw, 80px);
+            color: #fff; line-height: 1.1;
+            margin-bottom: 16px;
+            position: relative; z-index: 1;
+        }
+        .contact-hero h1 span { color: var(--yellow); }
+        .contact-hero p {
+            font-size: 17px; color: rgba(255,255,255,0.8);
+            font-weight: 600; max-width: 500px;
+            margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+        .hero-confetti {
+            position: absolute;
+            font-size: 36px;
+            pointer-events: none;
+            animation: confettiFall 6s ease-in-out infinite;
+            z-index: 2;
+        }
+        @keyframes confettiFall {
+            0%,100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(15deg); }
+        }
+
+        /* ════ QUICK CONTACT STRIP ════ */
+        .quick-strip {
+            background: var(--yellow);
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            position: relative; z-index: 5;
+        }
+        .quick-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 18px 36px;
+            border-right: 2px solid rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #1a1a2e;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .quick-item:last-child { border-right: none; }
+        .quick-item:hover { background: rgba(0,0,0,0.06); }
+        .quick-icon {
+            width: 44px; height: 44px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            flex-shrink: 0;
+        }
+        .quick-text h4 { font-size: 13px; font-weight: 800; color: #1a1a2e; }
+        .quick-text p  { font-size: 12px; color: #555; font-weight: 600; }
+
+        /* ════ MAIN LAYOUT ════ */
+        .contact-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 70px 60px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            position: relative; z-index: 5;
+        }
+
+        /* ════ LEFT COLUMN ════ */
+        .contact-left { display: flex; flex-direction: column; gap: 36px; }
+
+        .section-label-sm {
+            font-size: 13px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--red); margin-bottom: 8px;
+        }
+        .section-heading {
+            font-family: 'Cherry Bomb', cursive;
+            font-size: clamp(26px, 3.5vw, 40px);
+            color: #1a1a2e; margin-bottom: 24px;
+        }
+
+        /* Location Cards */
+        .loc-cards-wrap { display: flex; flex-direction: column; gap: 20px; }
+
+        .loc-card-big {
+            border-radius: 24px;
+            padding: 30px 28px;
+            border: 2.5px solid;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .loc-card-big:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+        .loc-card-big.nawala {
+            background: #FEF5F5;
+            border-color: #f0b8be;
+        }
+        .loc-card-big.mountlav {
+            background: #FFFDE7;
+            border-color: #FFD600;
+        }
+        .loc-card-big::after {
+            content: '';
+            position: absolute;
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            top: -30px; right: -30px;
+            opacity: 0.12;
+        }
+        .loc-card-big.nawala::after { background: var(--red); }
+        .loc-card-big.mountlav::after { background: var(--yellow); }
+
+        .loc-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 11px; font-weight: 800;
+            letter-spacing: 2px; text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            margin-bottom: 14px;
+        }
+        .loc-tag.nawala { background: #fce4e4; color: #A0323C; }
+        .loc-tag.mountlav { background: #fff3b0; color: #7a5000; }
+
+        .loc-card-big h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 24px; font-weight: 800;
+            color: #1a1a2e; margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0,0,0,0.08);
+        }
+
+        .loc-detail-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 10px;
+        }
+        .loc-detail-icon {
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .nawala .loc-detail-icon { background: #fce4e4; }
+        .mountlav .loc-detail-icon { background: #fff3b0; }
+        .loc-detail-text {
+            font-size: 14px; font-weight: 600;
+            color: #444; line-height: 1.55;
+        }
+        .loc-detail-text strong { color: #1a1a2e; font-weight: 800; }
+        .loc-detail-text a { color: var(--dark-blue); text-decoration: underline; font-weight: 700; }
+
+        .loc-call-btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800; font-size: 14px;
+            text-decoration: none;
+            transition: all 0.15s;
+            box-shadow: 0 4px 0;
+        }
+        .nawala .loc-call-btn { background: #A0323C; color: #fff; box-shadow-color: #7a1e26; box-shadow: 0 4px 0 #7a1e26; }
+        .mountlav .loc-call-btn { background: var(--yellow); color: #1a1a2e; box-shadow: 0 4px 0 #c9a800; }
+        .loc-call-btn:hover { transform: translateY(3px); box-shadow: 0 1px 0 !important; }
+        .nawala .loc-call-btn:hover { box-shadow: 0 1px 0 #7a1e26 !important; }
+        .mountlav .loc-call-btn:hover { box-shadow: 0 1px 0 #c9a800 !important; }
+
+        /* Contact form card */
+        .contact-form-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 36px 32px;
+            border: 2px solid #e8f0f8;
+            box-shadow: 0 8px 40px rgba(26,95,168,0.08);
+        }
+        .contact-form-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 26px; font-weight: 800;
+            color: #1a1a2e; margin-bottom: 6px;
+        }
+        .contact-form-card p {
+            font-size: 14px; color: #888; font-weight: 600; margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .form-group {
+            display: flex; flex-direction: column; gap: 6px;
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            font-size: 13px; font-weight: 800;
+            color: #333; letter-spacing: 0.5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 2px solid #dde8f5;
+            border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 14px; color: #333;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #f8fbff;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(59,174,232,0.12);
+            background: #fff;
+        }
+        .form-group textarea { min-height: 110px; resize: vertical; }
+
+        .sms-sub-row {
+            display: flex; align-items: center; gap: 10px;
+            padding: 14px 16px;
+            background: #fffbe6;
+            border-radius: 12px;
+            border: 2px dashed #FFD600;
+            margin-bottom: 20px;
+            font-size: 14px; font-weight: 600; color: #555;
+        }
+        .sms-sub-row input[type="checkbox"] {
+            width: 18px; height: 18px; cursor: pointer;
+            accent-color: var(--dark-blue);
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--dark-blue);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800; font-size: 16px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 0 #0e3d6e;
+            transition: all 0.15s;
+        }
+        .form-submit-btn:hover { transform: translateY(3px); box-shadow: 0 2px 0 #0e3d6e; }
+
+        /* ════ RIGHT COLUMN ════ */
+        .contact-right { display: flex; flex-direction: column; gap: 28px; }
+
+        /* Map blocks */
+        .map-card {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2.5px solid;
+            position: relative;
+        }
+        .map-card.nawala { border-color: #f0b8be; }
+        .map-card.mountlav { border-color: #FFD600; }
+
+        .map-header {
+            padding: 16px 22px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .map-card.nawala .map-header { background: #FEF5F5; }
+        .map-card.mountlav .map-header { background: #FFFDE7; }
+
+        .map-header-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+        .nawala .map-header-dot { background: var(--red); }
+        .mountlav .map-header-dot { background: #d4a000; }
+
+        .map-header-title {
+            font-family: 'Baloo 2', cursive;
+            font-size: 17px; font-weight: 800; color: #1a1a2e;
+            flex: 1;
+        }
+        .map-header-addr {
+            font-size: 12px; color: #888; font-weight: 600;
+        }
+        .map-open-link {
+            font-size: 12px; font-weight: 800;
+            color: var(--dark-blue); text-decoration: none;
+            padding: 6px 14px; border-radius: 20px;
+            background: rgba(26,95,168,0.08);
+            transition: background 0.2s;
+        }
+        .map-open-link:hover { background: rgba(26,95,168,0.16); }
+
+        .map-iframe-wrap {
+            width: 100%; height: 240px;
+            background: #e0eaf4;
+            position: relative;
+        }
+        .map-iframe-wrap iframe {
+            width: 100%; height: 100%;
+            border: none; display: block;
+        }
+
+        /* Opening Hours card */
+        .hours-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 28px 28px;
+            border: 2px solid #e8f0f8;
+            box-shadow: 0 8px 40px rgba(26,95,168,0.06);
+        }
+        .hours-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 22px; font-weight: 800;
+            color: #1a1a2e; margin-bottom: 18px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .hours-table-wrap { display: flex; flex-direction: column; gap: 0; }
+        .hours-row {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .hours-row:hover { background: #f4f8ff; }
+        .hours-row.header {
+            font-size: 11px; font-weight: 800;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: #aaa; padding-bottom: 6px;
+        }
+        .hours-month { font-weight: 700; color: #555; }
+        .hours-days  { font-weight: 800; color: #1a1a2e; }
+        .hours-time  { font-weight: 800; color: var(--dark-blue); }
+        .hours-closed { color: var(--red); font-weight: 800; }
+
+        .hours-divider { height: 1px; background: #eef; margin: 6px 0; }
+
+        .hours-note {
+            margin-top: 14px;
+            background: #E8F5E9;
+            border-radius: 12px;
+            border: 2px dashed #66BB6A;
+            padding: 12px 16px;
+            font-size: 13px; color: #2E7D32;
+            font-weight: 600;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .hours-note strong { font-weight: 800; }
+
+        /* Rules card */
+        .rules-card {
+            background: linear-gradient(135deg, #fffbea, #fff5cc);
+            border-radius: 24px;
+            padding: 24px 26px;
+            border: 2px solid #FFD600;
+        }
+        .rules-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 20px; font-weight: 800;
+            color: #1a1a2e; margin-bottom: 14px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .rules-grid { display: flex; flex-direction: column; gap: 10px; }
+        .rule-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 13.5px; font-weight: 600; color: #444;
+            line-height: 1.5;
+        }
+        .rule-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--orange);
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+        .rule-item strong { color: #1a1a2e; }
+
+        /* ════ SOCIAL ROW ════ */
+        .social-section {
+            background: #1A3A6B;
+            padding: 50px 60px;
+            text-align: center;
+            position: relative; z-index: 5;
+        }
+        .social-section h2 {
+            font-family: 'Cherry Bomb', cursive;
+            font-size: clamp(24px, 3vw, 38px);
+            color: #fff; margin-bottom: 8px;
+        }
+        .social-section h2 span { color: var(--yellow); }
+        .social-section p {
+            font-size: 15px; color: rgba(255,255,255,0.7);
+            font-weight: 600; margin-bottom: 28px;
+        }
+        .social-icons-row {
+            display: flex; gap: 20px;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .soc-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800; font-size: 15px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0;
+        }
+        .soc-btn:hover { transform: translateY(3px); box-shadow: 0 1px 0 !important; }
+        .soc-fb       { background: #1877F2; color: #fff; box-shadow: 0 4px 0 #0d5dbf; }
+        .soc-fb:hover { box-shadow: 0 1px 0 #0d5dbf !important; }
+        .soc-ig       { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; box-shadow: 0 4px 0 #8c1060; }
+        .soc-ig:hover { box-shadow: 0 1px 0 #8c1060 !important; }
+        .soc-yt       { background: #FF0000; color: #fff; box-shadow: 0 4px 0 #aa0000; }
+        .soc-yt:hover { box-shadow: 0 1px 0 #aa0000 !important; }
+        .soc-tk       { background: #000; color: #fff; box-shadow: 0 4px 0 #333; }
+        .soc-tk:hover { box-shadow: 0 1px 0 #333 !important; }
+        .soc-wa       { background: #25D366; color: #fff; box-shadow: 0 4px 0 #1a9e4a; }
+        .soc-wa:hover { box-shadow: 0 1px 0 #1a9e4a !important; }
+
+        /* ════ FOOTER ════ */
+        .ff-footer {
+            background: #fff;
+            font-family: 'Nunito', sans-serif;
+            border-top: 2px solid #e8f0f8;
+            position: relative; z-index: 5;
+        }
+        .ff-footer-main {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 0.8fr 1.1fr;
+            gap: 40px;
+            padding: 56px 60px 40px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .ff-foot-col h4 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 18px; font-weight: 800;
+            color: #1a1a2e; margin: 0 0 16px;
+        }
+        .ff-foot-col p { font-size: 13.5px; color: #555; font-weight: 600; line-height: 1.75; }
+        .ff-foot-col ul { list-style: disc; padding-left: 18px; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+        .ff-foot-col ul li a { font-size: 13.5px; color: #555; font-weight: 600; text-decoration: none; transition: color 0.2s; }
+        .ff-foot-col ul li a:hover { color: #1A5FA8; }
+        .ff-footer-logo { width: 140px; height: auto; display: block; margin: 14px 0 12px; }
+        .ff-about-party { font-size: 13px; color: #555; font-weight: 600; margin-top: 14px; line-height: 1.65; border-top: 1px dashed #dde; padding-top: 12px; }
+        .ff-contact-item { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 11px; }
+        .ff-contact-dot { width: 6px; height: 6px; border-radius: 50%; background: #3BAEE8; margin-top: 7px; flex-shrink: 0; }
+        .ff-contact-item a { color: #1A5FA8; font-weight: 700; font-size: 13.5px; text-decoration: underline; }
+        .ff-contact-item span.txt { font-size: 13px; color: #555; font-weight: 600; line-height: 1.65; }
+        .ff-loc-card { border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; }
+        .ff-loc-card.yellow { background: #FFF9C4; border-left: 4px solid #FFD600; }
+        .ff-loc-card.blue { background: #E3F2FD; border-left: 4px solid #3BAEE8; }
+        .ff-loc-name { font-family: 'Baloo 2', cursive; font-size: 15px; font-weight: 800; color: #1a1a2e; margin-bottom: 3px; }
+        .ff-loc-addr { font-size: 12.5px; color: #444; font-weight: 600; margin-bottom: 3px; }
+        .ff-loc-tel { font-size: 12.5px; color: #666; font-weight: 700; }
+        .ff-subscribe-wrap { margin-top: 18px; }
+        .ff-subscribe-wrap h5 { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 800; color: #1a1a2e; margin: 0 0 6px; }
+        .ff-subscribe-wrap p { font-size: 13px; color: #555; font-weight: 600; line-height: 1.6; margin-bottom: 12px; }
+        .ff-sub-input { width: 100%; padding: 11px 14px; border: 2px solid #E63329; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 13px; color: #333; outline: none; box-sizing: border-box; margin-bottom: 9px; }
+        .ff-sub-input:focus { border-color: #1A5FA8; }
+        .ff-sub-btn { width: 100%; background: #1A3A6B; color: #fff; border: none; padding: 12px; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 1.5px; cursor: pointer; transition: background 0.2s; }
+        .ff-sub-btn:hover { background: #1A5FA8; }
+        .ff-footer-bottom { background: #f4f8fc; border-top: 1px solid #dde8f5; padding: 16px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .ff-footer-bottom span, .ff-footer-bottom a { font-size: 13px; color: #888; font-weight: 600; text-decoration: none; }
+        .ff-footer-bottom a:hover { color: #1A5FA8; }
+        .ff-footer-bottom .heart { color: #E63329; }
+        .ff-footer-bottom-links { display: flex; gap: 22px; }
+
+        /* ════ REVEAL ANIMATIONS ════ */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* ════ RESPONSIVE ════ */
+        @media (max-width: 1024px) {
+            nav { padding: 4px 24px; }
+            .logo img { height: 70px; }
+            .nav-links a { font-size: 13px; padding: 6px 8px; }
+            .contact-main { padding: 50px 40px; gap: 36px; }
+            .contact-hero { padding: 50px 40px; }
+            .social-section { padding: 44px 40px; }
+            .ff-footer-main { grid-template-columns: 1fr 1fr; gap: 30px; padding: 44px 40px 30px; }
+            .ff-footer-bottom { padding: 14px 40px; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 6px 18px; }
+            .logo img { height: 60px; }
+            .nav-links { display: none !important; }
+            .hamburger-btn { display: flex !important; }
+            .top-banner { font-size: 12px; gap: 8px; padding: 8px 14px; }
+            .contact-hero { padding: 44px 20px 36px; }
+            .quick-strip { justify-content: flex-start; overflow-x: auto; }
+            .quick-item { padding: 14px 22px; flex-shrink: 0; }
+            .contact-main { grid-template-columns: 1fr; padding: 36px 18px; gap: 28px; }
+            .form-row { grid-template-columns: 1fr; }
+            .social-section { padding: 36px 18px; }
+            .ff-footer-main { grid-template-columns: 1fr; gap: 28px; padding: 36px 18px 24px; }
+            .ff-footer-bottom { padding: 14px 18px; flex-direction: column; text-align: center; }
+            .ff-footer-bottom-links { justify-content: center; }
+            .hero-confetti { display: none; }
+        }
+        @media (max-width: 400px) {
+            .contact-form-card { padding: 24px 18px; }
+            .loc-card-big { padding: 22px 18px; }
+            .hours-row { grid-template-columns: 1fr 1fr; }
+            .hours-row .hours-days { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BUBBLES BG -->
+<div class="bubbles-bg">
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+</div>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+    🎉 NOW OPEN at 2 locations!
+    <span class="divider">—</span>
+    <span>Nawala &amp; Mount Lavinia</span>
+    <span class="divider">|</span>
+    Birthday parties available 7 days a week! 🎈
+</div>
+
+<!-- NAVBAR -->
+<nav id="mainNav">
+    <div class="logo">
+        <img src="images/logo.png" alt="Fun Factory">
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#Facilities">Facilities</a></li>
+        <li><a href="index.html#services-section">Services</a></li>
+        <li><a href="#">Party Packages</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="index.html#ff-gallery">Photo Album</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+        <li><a href="#" class="btn-book-nav">Book Now</a></li>
+    </ul>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-menu-overlay" id="mobileOverlay" onclick="toggleMobileNav()"></div>
+<div class="mobile-nav-panel" id="mobileNavPanel">
+    <div class="mobile-nav-header">
+        <div class="mobile-nav-logo">Fun<span>Factory</span> 🎈</div>
+        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+    </div>
+    <ul class="mobile-nav-links">
+        <li><a href="index.html" onclick="toggleMobileNav()"><span class="nav-icon">🏠</span> Home</a></li>
+        <li><a href="about.html" onclick="toggleMobileNav()"><span class="nav-icon">🏠</span> About</a></li>
+        <li><a href="index.html#Facilities" onclick="toggleMobileNav()"><span class="nav-icon">🛝</span> Facilities</a></li>
+        <li><a href="index.html#services-section" onclick="toggleMobileNav()"><span class="nav-icon">⭐</span> Services</a></li>
+        <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">🎂</span> Party Packages</a></li>
+        <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">🏆</span> Membership</a></li>
+        <li><a href="index.html#ff-gallery" onclick="toggleMobileNav()"><span class="nav-icon">📸</span> Photo Album</a></li>
+        <div class="mobile-nav-divider"></div>
+        <li><a href="contact.html" onclick="toggleMobileNav()"><span class="nav-icon">📍</span> Contact Us</a></li>
+    </ul>
+    <a href="#" class="mobile-book-btn">🎈 Book Now</a>
+</div>
+
+<!-- HERO BANNER -->
+<section class="contact-hero">
+    <span class="hero-confetti" style="top:20px;left:8%;animation-delay:0s;">🎈</span>
+    <span class="hero-confetti" style="top:30px;right:12%;animation-delay:1.2s;">⭐</span>
+    <span class="hero-confetti" style="bottom:30px;left:20%;animation-delay:2.4s;">🎉</span>
+    <span class="hero-confetti" style="top:15px;right:30%;animation-delay:0.6s;">🌟</span>
+    <p class="eyebrow">Get In Touch</p>
+    <h1>Contact <span>Us!</span></h1>
+    <p>We'd love to hear from you — questions, bookings, or just a hello!</p>
+</section>
+
+<!-- QUICK CONTACT STRIP -->
+<div class="quick-strip">
+    <a href="tel:0112862656" class="quick-item">
+        <div class="quick-icon">📞</div>
+        <div class="quick-text">
+            <h4>Call Nawala</h4>
+            <p>011 286 2656</p>
+        </div>
+    </a>
+    <a href="tel:0115882656" class="quick-item">
+        <div class="quick-icon">📞</div>
+        <div class="quick-text">
+            <h4>Call Mt. Lavinia</h4>
+            <p>011 588 2656</p>
+        </div>
+    </a>
+    <a href="tel:0773603777" class="quick-item">
+        <div class="quick-icon">📱</div>
+        <div class="quick-text">
+            <h4>Mobile (Both)</h4>
+            <p>077 360 3777</p>
+        </div>
+    </a>
+    <a href="mailto:info@funfactory.lk" class="quick-item">
+        <div class="quick-icon">✉️</div>
+        <div class="quick-text">
+            <h4>Email Us</h4>
+            <p>info@funfactory.lk</p>
+        </div>
+    </a>
+    <a href="https://wa.me/94773603777" class="quick-item" target="_blank">
+        <div class="quick-icon">💬</div>
+        <div class="quick-text">
+            <h4>WhatsApp</h4>
+            <p>077 360 3777</p>
+        </div>
+    </a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="contact-main">
+
+    <!-- LEFT COLUMN -->
+    <div class="contact-left">
+
+        <!-- Location Cards -->
+        <div>
+            <p class="section-label-sm reveal">Our Locations</p>
+            <h2 class="section-heading reveal">Find Us Near You</h2>
+
+            <div class="loc-cards-wrap">
+
+                <!-- NAWALA -->
+                <div class="loc-card-big nawala reveal-left">
+                    <span class="loc-tag nawala">📍 Nawala Branch</span>
+                    <h3>Nawala Branch</h3>
+
+                    <div class="loc-detail-row">
+                        <div class="loc-detail-icon">📍</div>
+                        <div class="loc-detail-text">
+                            <strong>14, Nawala 2nd Lane, Nawala Road, Rajagiriya</strong>
+                        </div>
+                    </div>
+                    <div class="loc-detail-row">
+                        <div class="loc-detail-icon">📞</div>
+                        <div class="loc-detail-text">
+                            Phone: <a href="tel:0112862656">011 286 2656</a><br>
+                            Mobile: <a href="tel:0773603777">077 360 3777</a>
+                        </div>
+                    </div>
+                    <div class="loc-detail-row">
+                        <div class="loc-detail-icon">✉️</div>
+                        <div class="loc-detail-text">
+                            <a href="mailto:info@funfactory.lk">info@funfactory.lk</a>
+                        </div>
+                    </div>
+                    <a href="tel:0112862656" class="loc-call-btn">📞 Call Nawala</a>
+                </div>
+
+                <!-- MOUNT LAVINIA -->
+                <div class="loc-card-big mountlav reveal-left">
+                    <span class="loc-tag mountlav">📍 Mount Lavinia Branch</span>
+                    <h3>Mount Lavinia Branch</h3>
+
+                    <div class="loc-detail-row">
+                        <div class="loc-detail-icon">📍</div>
+                        <div class="loc-detail-text">
+                            <strong>3rd Floor, Mount City Building, 143 1/2 Galle Road, Mount Lavinia</strong>
+                        </div>
+                    </div>
+                    <div class="loc-detail-row">
+                        <div class="loc-detail-icon">📞</div>
+                        <div class="loc-detail-text">
+                            Phone: <a href="tel:0115882656">011 588 2656</a><br>
+                            Mobile: <a href="tel:0773603777">077 360 3777</a>
+                        </div>
+                    </div>
+                    <div class="loc-detail-row">
+                        <div class="loc-detail-icon">✉️</div>
+                        <div class="loc-detail-text">
+                            <a href="mailto:mount@funfactory.lk">mount@funfactory.lk</a>
+                        </div>
+                    </div>
+                    <a href="tel:0115882656" class="loc-call-btn">📞 Call Mt. Lavinia</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-card reveal">
+            <h3>📬 Send Us a Message</h3>
+            <p>Fill in the form and we'll get back to you as soon as possible!</p>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="e.g. Amali Perera">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="077 XXX XXXX">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="yourname@email.com">
+            </div>
+
+            <div class="form-group">
+                <label>Branch</label>
+                <select>
+                    <option value="">Select a Branch</option>
+                    <option>Nawala</option>
+                    <option>Mount Lavinia</option>
+                    <option>Both</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Subject</label>
+                <select>
+                    <option value="">What's this about?</option>
+                    <option>Birthday Party Booking</option>
+                    <option>Membership Enquiry</option>
+                    <option>General Question</option>
+                    <option>Drop N Shop</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Your Message</label>
+                <textarea placeholder="Tell us how we can help you! 😊"></textarea>
+            </div>
+
+            <div class="sms-sub-row">
+                <input type="checkbox" id="smsCheck">
+                <label for="smsCheck" style="cursor:pointer;">
+                    📱 <strong>Subscribe to Fun Factory news alerts via E-mail or SMS</strong>
+                </label>
+            </div>
+
+            <button class="form-submit-btn" onclick="handleSubmit()">🎉 Send Message</button>
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="contact-right">
+
+        <!-- MAP: NAWALA -->
+        <div class="map-card nawala reveal-right">
+            <div class="map-header">
+                <div class="map-header-dot"></div>
+                <div>
+                    <div class="map-header-title">Nawala Branch</div>
+                    <div class="map-header-addr">14, Nawala 2nd Lane, Nawala Road, Rajagiriya</div>
+                </div>
+                <a href="https://maps.google.com/?q=573+Nawala+Road+Rajagiriya" target="_blank" class="map-open-link">Open ↗</a>
+            </div>
+            <div class="map-iframe-wrap">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0!2d79.898!3d6.907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnMjUuMiJOIDc5wrA1Myc1Mi44IkU!5e0!3m2!1sen!2slk!4v1"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- MAP: MOUNT LAVINIA -->
+        <div class="map-card mountlav reveal-right">
+            <div class="map-header">
+                <div class="map-header-dot"></div>
+                <div>
+                    <div class="map-header-title">Mount Lavinia Branch</div>
+                    <div class="map-header-addr">3rd Floor, Mount City Building, Galle Road</div>
+                </div>
+                <a href="https://maps.google.com/?q=Mount+City+Building+143+Galle+Road+Mount+Lavinia" target="_blank" class="map-open-link">Open ↗</a>
+            </div>
+            <div class="map-iframe-wrap">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.5!2d79.865!3d6.840!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTAnMjQuMCJOIDc5wrA1MSc1NC4wIkU!5e0!3m2!1sen!2slk!4v1"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- OPENING HOURS -->
+        <div class="hours-card reveal">
+            <h3>🕐 Opening Hours</h3>
+            <div class="hours-table-wrap">
+                <div class="hours-row header">
+                    <span>Months</span>
+                    <span>Days</span>
+                    <span>Time</span>
+                </div>
+                <div class="hours-divider"></div>
+                <div class="hours-row">
+                    <span class="hours-month">Jan · Feb · Mar · May · Jun · Sep · Oct · Nov</span>
+                    <span class="hours-days">Wed – Sun</span>
+                    <span class="hours-time">10am – 8pm</span>
+                </div>
+                <div class="hours-divider"></div>
+                <div class="hours-row">
+                    <span class="hours-month">Apr · Jul · Aug · Dec</span>
+                    <span class="hours-days">Wed – Sun</span>
+                    <span class="hours-time">10am – 8pm</span>
+                </div>
+                <div class="hours-divider"></div>
+                <div class="hours-row">
+                    <span class="hours-month">Every week</span>
+                    <span class="hours-days">Mon &amp; Tue</span>
+                    <span class="hours-closed">Closed*</span>
+                </div>
+                <div class="hours-divider"></div>
+                <div class="hours-row">
+                    <span class="hours-month">Public &amp; School Holidays</span>
+                    <span class="hours-days">All days</span>
+                    <span class="hours-time">10am – 8pm</span>
+                </div>
+            </div>
+            <div class="hours-note">
+                🌟 <span><strong>Always open</strong> on public holidays — even Mondays &amp; Tuesdays!</span>
+            </div>
+        </div>
+
+        <!-- GOOD TO KNOW -->
+        <div class="rules-card reveal">
+            <h3>💡 Good to Know</h3>
+            <div class="rules-grid">
+                <div class="rule-item"><div class="rule-dot"></div><span><strong>Socks required</strong> at all times for both children and adults in the play area (Rs. 150/pair at the door)</span></div>
+                <div class="rule-item"><div class="rule-dot"></div><span><strong>No outside food</strong> permitted inside — baby bottles &amp; baby food allowed in the café area only</span></div>
+                <div class="rule-item"><div class="rule-dot"></div><span><strong>Adult supervision required</strong> — a parent or guardian (18+) must accompany children at all times for Walk-in Play</span></div>
+                <div class="rule-item"><div class="rule-dot"></div><span><strong>Walk-in cutoff:</strong> 1 hour before closing &nbsp;|&nbsp; <strong>Drop N Shop cutoff:</strong> 2 hours before closing</span></div>
+                <div class="rule-item"><div class="rule-dot"></div><span><strong>Party bookings</strong> available any day of the week — call us to check availability!</span></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SOCIAL SECTION -->
+<section class="social-section">
+    <h2>Stay <span>Connected!</span> 🎉</h2>
+    <p>Follow us for events, promotions and fun moments from the Fun Factory family</p>
+    <div class="social-icons-row">
+        <a href="https://facebook.com/YourPage" target="_blank" class="soc-btn soc-fb">
+            <span>f</span> Facebook
+        </a>
+        <a href="https://instagram.com/YourPage" target="_blank" class="soc-btn soc-ig">
+            <span>📷</span> Instagram
+        </a>
+        <a href="https://youtube.com/YourChannel" target="_blank" class="soc-btn soc-yt">
+            <span>▶</span> YouTube
+        </a>
+        <a href="https://tiktok.com/@YourPage" target="_blank" class="soc-btn soc-tk">
+            <span>♪</span> TikTok
+        </a>
+        <a href="https://wa.me/94773603777" target="_blank" class="soc-btn soc-wa">
+            <span>💬</span> WhatsApp
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ff-footer">
+    <div class="ff-footer-main">
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">About</h4>
+            <p style="font-size:15px;">Fun Factory is Sri Lanka's premier supervised indoor playground for children aged 0–11 years. With world-class facilities in Nawala and Mount Lavinia, we deliver the ultimate kids play experience in a safe, clean and exciting environment.</p>
+            <img class="ff-footer-logo" src="images/logo.png" alt="Fun Factory Logo">
+            <p class="ff-about-party" style="font-size:15px;">🎉 <strong>Party Bookings</strong><br>Parties can be booked any day of the week. Call us or visit our website!</p>
+        </div>
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Contact Us</h4>
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt"><a href="tel:0112802656" style="font-size:15px;">011 2802656</a><br><a href="tel:0773603777" style="font-size:15px;">077 3603777</a></span>
+            </div>
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt"><a href="mailto:info@funfactory.lk" style="font-size:15px;">info@funfactory.lk</a></span>
+            </div>
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt" style="font-size:15px;">573 Nawala Road, Rajagiriya<br>3rd Floor, Mount City Building,<br>143 1/2 Galle Rd, Mount Lavinia</span>
+            </div>
+        </div>
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Quick Links</h4>
+            <ul>
+                <li><a href="#" style="font-size:15px;">Jungle Gym</a></li>
+                <li><a href="#" style="font-size:15px;">Toddlers &amp; Infants</a></li>
+                <li><a href="#" style="font-size:15px;">Library &amp; Activity Zones</a></li>
+                <li><a href="#" style="font-size:15px;">Cafe</a></li>
+                <li><a href="#" style="font-size:15px;">Membership</a></li>
+                <li><a href="#" style="font-size:15px;">Photo Album</a></li>
+                <li><a href="#" style="font-size:15px;">Event Calendar</a></li>
+                <li><a href="contact.html" style="font-size:15px;">Contact Us</a></li>
+                <li><a href="#" style="font-size:15px;">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Our Locations</h4>
+            <div class="ff-loc-card yellow">
+                <div class="ff-loc-name" style="font-size:20px;">Nawala Branch</div>
+                <div class="ff-loc-addr" style="font-size:15px;">573, Nawala Road, Rajagiriya</div>
+                <div class="ff-loc-tel" style="font-size:15px;">011 286 2656 · 077 360 3777</div>
+            </div>
+            <div class="ff-loc-card blue">
+                <div class="ff-loc-name" style="font-size:20px;">Mount Lavinia Branch</div>
+                <div class="ff-loc-addr" style="font-size:15px;">3rd Floor, Mount City Building, Galle Road</div>
+                <div class="ff-loc-tel" style="font-size:15px;">011 588 2656 · 077 360 3777</div>
+            </div>
+            <div class="ff-subscribe-wrap">
+                <h5 style="font-size:15px;">Subscribe</h5>
+                <p style="font-size:15px;">Subscribe here with your email to get the very latest news about FUN FACTORY</p>
+                <input class="ff-sub-input" type="email" placeholder="Email Address" style="font-size:15px;">
+                <button class="ff-sub-btn" style="font-size:15px;">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+    <div class="ff-footer-bottom">
+        <span>© 2025 Fun Factory — All Rights Reserved. Website by Ribelz.</span>
+        <div class="ff-footer-bottom-links">
+            <a href="#">Site Map</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+        </div>
+        <span><span class="heart">♥</span> Made for kids, by people who love them</span>
+    </div>
+</footer>
+
+<script>
+    function toggleMobileNav() {
+        const btn     = document.getElementById('hamburgerBtn');
+        const panel   = document.getElementById('mobileNavPanel');
+        const overlay = document.getElementById('mobileOverlay');
+        const isOpen  = panel.classList.toggle('open');
+        btn.classList.toggle('open');
+        overlay.classList.toggle('open');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const panel = document.getElementById('mobileNavPanel');
+            if (panel.classList.contains('open')) toggleMobileNav();
+        }
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('mainNav');
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => obs.observe(el));
+    });
+
+    function handleSubmit() {
+        const btn = document.querySelector('.form-submit-btn');
+        btn.textContent = '✅ Message Sent! We\'ll be in touch soon.';
+        btn.style.background = '#2e7d32';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.textContent = '🎉 Send Message';
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 4000);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Packages - Fun Factory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #3BAEE8;
+            --yellow: #F7C416;
+            --orange: #F47920;
+            --red: #E63329;
+            --dark-blue: #1A5FA8;
+            --light-blue-bg: #D6EFFA;
+            --white: #ffffff;
+            --text-dark: #222;
+            --bubble1: rgba(100,181,246,0.25);
+            --bubble2: rgba(252,228,236,0.35);
+            --bubble3: rgba(255,241,118,0.25);
+            --bubble4: rgba(165,214,167,0.25);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ════ BUBBLES BG ════ */
+        .bubbles-bg {
+            position: fixed; inset: 0;
+            pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        .bubble {
+            position: absolute; border-radius: 50%;
+            animation: floatBubble linear infinite; opacity: 0;
+        }
+        .bubble:nth-child(1)  { width:220px;height:220px;top:5%;left:2%;    background:var(--bubble1);animation-duration:18s;animation-delay:0s;   }
+        .bubble:nth-child(2)  { width:160px;height:160px;top:15%;right:8%;  background:var(--bubble2);animation-duration:22s;animation-delay:2s;   }
+        .bubble:nth-child(3)  { width:280px;height:280px;top:55%;left:70%;  background:var(--bubble3);animation-duration:26s;animation-delay:4s;   }
+        .bubble:nth-child(4)  { width:120px;height:120px;top:75%;left:10%;  background:var(--bubble4);animation-duration:20s;animation-delay:1s;   }
+        .bubble:nth-child(5)  { width:190px;height:190px;top:40%;right:2%;  background:var(--bubble1);animation-duration:24s;animation-delay:3s;   }
+        .bubble:nth-child(6)  { width:100px;height:100px;top:85%;right:25%; background:var(--bubble2);animation-duration:19s;animation-delay:5s;   }
+        .bubble:nth-child(7)  { width:240px;height:240px;top:30%;left:38%;  background:var(--bubble3);animation-duration:30s;animation-delay:6s;   }
+        .bubble:nth-child(8)  { width:180px;height:180px;top:60%;left:50%;  background:var(--bubble4);animation-duration:23s;animation-delay:2.5s; }
+        .bubble:nth-child(9)  { width:130px;height:130px;top:10%;left:45%;  background:var(--bubble2);animation-duration:21s;animation-delay:7s;   }
+        .bubble:nth-child(10) { width:200px;height:200px;top:80%;right:5%;  background:var(--bubble1);animation-duration:25s;animation-delay:1.5s; }
+        @keyframes floatBubble {
+            0%   { opacity:0; transform:translateY(30px) scale(0.9); }
+            10%  { opacity:1; }
+            90%  { opacity:1; }
+            100% { opacity:0; transform:translateY(-40px) scale(1.05); }
+        }
+
+        /* ════ TOP BANNER ════ */
+        .top-banner {
+            background: var(--blue);
+            color: white;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 200;
+        }
+        .top-banner span { color: var(--yellow); }
+        .top-banner .divider { opacity: 0.5; color: #fff; }
+
+        /* ════ NAVBAR ════ */
+        nav {
+            background: #D6EFFA;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 150;
+        }
+        .logo { flex-shrink: 0; }
+        .logo img { height: 90px; width: auto; display: block; }
+        .logo-text {
+            font-family: 'Fredoka One', cursive;
+            font-size: 28px;
+            color: var(--dark-blue);
+        }
+        .logo-text span { color: var(--orange); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { background: rgba(26,95,168,0.1); color: var(--dark-blue); }
+        .nav-links a.active { color: var(--dark-blue); background: rgba(26,95,168,0.08); }
+        .btn-book-nav {
+            background: var(--yellow) !important;
+            color: var(--text-dark) !important;
+            font-weight: 800 !important;
+            padding: 10px 20px !important;
+            border-radius: 30px !important;
+            box-shadow: 0 4px 0 #c9980e;
+            margin-left: 8px;
+        }
+        .btn-book-nav:hover {
+            background: #f0b800 !important;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #c9980e !important;
+        }
+
+        /* ════ HAMBURGER ════ */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 10px;
+            transition: background 0.2s;
+            z-index: 160;
+        }
+        .hamburger-btn:hover { background: rgba(26,95,168,0.1); }
+        .hamburger-btn .bar {
+            width: 26px; height: 2.5px;
+            background: #1A5FA8;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+            display: block;
+        }
+        .hamburger-btn.open .bar:nth-child(1) { transform: rotate(45deg) translate(5.5px, 5.5px); }
+        .hamburger-btn.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger-btn.open .bar:nth-child(3) { transform: rotate(-45deg) translate(5.5px, -5.5px); }
+
+        /* ════ MOBILE NAV ════ */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 170;
+            backdrop-filter: blur(2px);
+        }
+        .mobile-menu-overlay.open { display: block; }
+        .mobile-nav-panel {
+            position: fixed;
+            top: 0; right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: #fff;
+            z-index: 180;
+            transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: -6px 0 32px rgba(0,0,0,0.18);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav-panel.open { right: 0; }
+        .mobile-nav-header {
+            background: linear-gradient(135deg, #1A5FA8, #3BAEE8);
+            padding: 20px 20px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mobile-nav-logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 22px;
+            color: #fff;
+        }
+        .mobile-nav-logo span { color: var(--yellow); }
+        .mobile-nav-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .mobile-nav-links { list-style: none; padding: 10px 0; flex: 1; }
+        .mobile-nav-links li a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 22px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 15.5px;
+            color: #222;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.18s;
+        }
+        .mobile-nav-links li a:hover {
+            background: #EEF7FF;
+            border-left-color: #1A5FA8;
+            color: #1A5FA8;
+        }
+        .nav-icon { font-size: 18px; width: 26px; text-align: center; flex-shrink: 0; }
+        .mobile-nav-divider { height: 1px; background: #eef; margin: 6px 22px; }
+        .mobile-book-btn {
+            margin: 14px 18px 20px;
+            display: block;
+            background: var(--yellow);
+            color: #222;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 14px;
+            border-radius: 30px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 0 #c9980e;
+        }
+
+        /* ════ PAGE HERO ════ */
+        .page-hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #2980b9 100%);
+            padding: 70px 60px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+        }
+        .page-hero::before {
+            content: '🎈';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.07;
+            top: -20px; left: 40px;
+            pointer-events: none;
+        }
+        .page-hero::after {
+            content: '🎂';
+            position: absolute;
+            font-size: 180px;
+            opacity: 0.07;
+            bottom: -30px; right: 60px;
+            pointer-events: none;
+        }
+        .page-hero-eyebrow {
+            font-size: 13px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--yellow); margin-bottom: 14px;
+            position: relative; z-index: 1;
+        }
+        .page-hero-title {
+            font-family: 'Cherry Bomb', cursive;
+            font-size: clamp(42px, 7vw, 80px);
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            position: relative; z-index: 1;
+        }
+        .page-hero-title .accent { color: var(--yellow); }
+        .page-hero-desc {
+            font-size: 17px;
+            color: rgba(255,255,255,0.85);
+            max-width: 620px;
+            margin: 0 auto 32px;
+            line-height: 1.75;
+            font-weight: 600;
+            position: relative; z-index: 1;
+        }
+        .page-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--yellow);
+            color: var(--text-dark);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 17px;
+            padding: 15px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 6px 0 #c9980e;
+            transition: all 0.15s;
+            position: relative; z-index: 1;
+        }
+        .page-hero-cta:hover { transform: translateY(3px); box-shadow: 0 3px 0 #c9980e; }
+
+        /* ════ CUSTOMIZED NOTE ════ */
+        .custom-note {
+            background: linear-gradient(135deg, #fff9c4, #ffe082);
+            border: 2px solid #fdd835;
+            border-radius: 20px;
+            padding: 28px 40px;
+            margin: 50px 60px 0;
+            position: relative; z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .custom-note-icon { font-size: 36px; flex-shrink: 0; }
+        .custom-note p {
+            font-size: 15px;
+            color: #444;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+        .custom-note strong { color: var(--dark-blue); }
+
+        /* ════ PACKAGES SECTION ════ */
+        .packages-section {
+            padding: 60px;
+            position: relative; z-index: 5;
+        }
+
+        /* ════ SECTION HEADING ════ */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .section-heading-badge {
+            border-radius: 16px;
+            padding: 10px 22px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .badge-green  { background: #2ecc71; box-shadow: 0 4px 0 #1aab59; }
+        .badge-blue   { background: var(--blue); box-shadow: 0 4px 0 #1a8fc0; }
+        .badge-dark-blue   { background: var(--dark-blue); box-shadow: 0 4px 0 ##1A5FA8; }
+        .badge-orange { background: var(--orange); box-shadow: 0 4px 0 #b55c0a; }
+        .badge-purple { background: #8e44ad; box-shadow: 0 4px 0 #6c3483; }
+        .badge-gold   { background: #f39c12; box-shadow: 0 4px 0 #b7770d; }
+
+        .section-heading-line {
+            flex: 1;
+            height: 3px;
+            border-radius: 2px;
+        }
+        .line-green  { background: linear-gradient(90deg, #2ecc71, transparent); }
+        .line-blue   { background: linear-gradient(90deg, var(--blue), transparent); }
+        .line-orange { background: linear-gradient(90deg, var(--orange), transparent); }
+        .line-purple { background: linear-gradient(90deg, #8e44ad, transparent); }
+        .line-gold   { background: linear-gradient(90deg, #f39c12, transparent); }
+
+        /* ════ PACKAGE CARD ════ */
+        .pkg-card {
+            border-radius: 28px;
+            border: 2.5px solid;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .pkg-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        /* School */
+        .pkg-school { border-color: #1A5FA8; }
+        .pkg-school .pkg-header { background: linear-gradient(135deg, #1A5FA8, #1A5FA8); }
+
+        /* Weekday */
+        .pkg-weekday { border-color: var(--blue); }
+        .pkg-weekday .pkg-header { background: linear-gradient(135deg, #1a78c2, var(--blue)); }
+
+        /* Weekend */
+        .pkg-weekend { border-color: var(--orange); }
+        .pkg-weekend .pkg-header { background: linear-gradient(135deg, #c25a0a, var(--orange)); }
+
+        /* Exclusive */
+        .pkg-exclusive { border-color: #8e44ad; }
+        .pkg-exclusive .pkg-header { background: linear-gradient(135deg, #6c3483, #8e44ad); }
+
+        /* Platinum / Titanium / Rhodium */
+        .pkg-platinum { border-color: #7f8c8d; }
+        .pkg-platinum .pkg-header { background: linear-gradient(135deg, #5d6d7e, #95a5a6); }
+        .pkg-titanium { border-color: #2c3e50; }
+        .pkg-titanium .pkg-header { background: linear-gradient(135deg, #1a252f, #2c3e50); }
+        .pkg-rhodium  { border-color: #e74c3c; }
+        .pkg-rhodium  .pkg-header { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+
+        .pkg-header {
+            padding: 28px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pkg-header-left { flex: 1; }
+        .pkg-name {
+            font-family: 'Baloo 2', cursive;
+            font-size: clamp(22px, 3vw, 32px);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .pkg-sub {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 700;
+        }
+        .pkg-price-tag {
+            background: rgba(255,255,255,0.18);
+            border: 2px solid rgba(255,255,255,0.35);
+            border-radius: 18px;
+            padding: 12px 24px;
+            text-align: center;
+            backdrop-filter: blur(6px);
+        }
+        .pkg-price-tag .price {
+            font-family: 'Baloo 2', cursive;
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+        }
+        .pkg-price-tag .price-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.75);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        /* Body */
+        .pkg-body {
+            background: #fff;
+            padding: 32px 36px;
+        }
+        .pkg-meta-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .pkg-meta-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f4f8fc;
+            border: 2px solid #dde8f5;
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #444;
+        }
+        .pkg-meta-chip .chip-icon { font-size: 16px; }
+
+        .pkg-features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .pkg-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #444;
+            line-height: 1.5;
+        }
+        .pkg-feature-dot {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        .dot-green  { background: #2ecc71; }
+        .dot-blue   { background: var(--blue); }
+        .dot-orange { background: var(--orange); }
+        .dot-purple { background: #8e44ad; }
+        .dot-gray   { background: #7f8c8d; }
+        .dot-dark   { background: #2c3e50; }
+        .dot-red    { background: #e74c3c; }
+
+        .pkg-note {
+            background: #fff9e6;
+            border: 1.5px dashed #fdd835;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-size: 13px;
+            color: #666;
+            font-weight: 600;
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+        .pkg-note strong { color: var(--orange); }
+
+        .pkg-min-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--light-blue-bg);
+            border: 2px solid var(--blue);
+            border-radius: 50px;
+            padding: 7px 18px;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--dark-blue);
+            margin-top: 14px;
+        }
+
+        /* ════ LOOT BAGS NOTE ════ */
+        .loot-note {
+            background: linear-gradient(135deg, #fff9c4, #fff3b0);
+            border: 2px solid #fdd835;
+            border-radius: 16px;
+            padding: 16px 22px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: #555;
+            font-weight: 600;
+            line-height: 1.65;
+        }
+        .loot-note strong { color: var(--dark-blue); font-size: 14px; }
+
+        /* ════ SPECIAL NOTE BOX ════ */
+        .special-note-box {
+            background: #EBF8FF;
+            border-left: 5px solid var(--blue);
+            border-radius: 0 16px 16px 0;
+            padding: 20px 24px;
+            margin: 0 60px 40px;
+            position: relative; z-index: 5;
+        }
+        .special-note-box h4 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 18px; font-weight: 800;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+        .special-note-box ul {
+            list-style: none; padding: 0;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .special-note-box ul li {
+            font-size: 14px; font-weight: 600; color: #444;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .special-note-box ul li::before {
+            content: '✅';
+            font-size: 14px;
+        }
+
+        /* ════ PLAY AREA NOTE ════ */
+        .play-area-note {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px solid #ffb74d;
+            border-radius: 20px;
+            padding: 22px 32px;
+            margin: 0 60px 50px;
+            position: relative; z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .play-area-note .note-icon { font-size: 32px; flex-shrink: 0; }
+        .play-area-note p {
+            font-family: 'Baloo 2', cursive;
+            font-size: 18px;
+            font-weight: 800;
+            color: #e65100;
+        }
+
+        /* ════ PARTY CTA ════ */
+        .party-cta-section {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            position: relative; z-index: 5;
+        }
+        .party-cta-banner {
+            background: #1A3A6B;
+            border-radius: 22px;
+            padding: 30px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            width: 80%;
+            border: 2.5px solid #2a5090;
+            position: relative;
+            overflow: hidden;
+        }
+        .party-cta-center {
+            text-align: center;
+            flex: 1;
+        }
+        .party-cta-center h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(22px, 3vw, 30px);
+            color: #fff;
+            margin: 0 0 8px;
+        }
+        .party-cta-center .cta-sub {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+            margin: 0 0 10px;
+        }
+        .party-cta-center .cta-phone {
+            font-size: 20px;
+            font-weight: 900;
+            color: #FFD600;
+        }
+        .party-socials {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        .party-socials a {
+            display: block;
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: transform 0.22s;
+            text-decoration: none;
+            background: rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px;
+        }
+        .party-socials a:hover { transform: scale(1.12) translateY(-4px); }
+
+        /* ════ FOOTER ════ */
+        .ff-footer-bottom {
+            background: #0e3d6e;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            position: relative; z-index: 5;
+        }
+
+        /* ════ REVEAL ANIMATION ════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ════ SCROLL PROGRESS ════ */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* ════ STICKY BOOK BTN ════ */
+        .sticky-book-btn {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            background: var(--red);
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(230,51,41,0.4), 0 4px 0 #a01f18;
+            cursor: pointer;
+            border: none;
+            z-index: 999;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: boop 2s ease-in-out infinite;
+        }
+        .sticky-book-btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 12px 32px rgba(230,51,41,0.5), 0 4px 0 #a01f18;
+        }
+        @keyframes boop {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ════ PACKAGE TABS NAV ════ */
+        .pkg-tabs-nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 30px 60px 0;
+            position: relative; z-index: 5;
+        }
+        .pkg-tab-btn {
+            font-family: 'Nunito', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 10px 22px;
+            border-radius: 50px;
+            border: 2.5px solid;
+            cursor: pointer;
+            background: #fff;
+            transition: all 0.2s;
+        }
+        .pkg-tab-btn:hover { transform: translateY(-2px); }
+        .pkg-tab-btn.active { color: #fff !important;}
+
+        .tab-school  { color: #27ae60; border-color: #27ae60; }
+        .tab-school.active  { background:#1A5FA8 }
+        .tab-weekday { color: var(--blue); border-color: var(--blue); }
+        .tab-weekday.active { background: var(--blue); }
+        .tab-weekend { color: var(--orange); border-color: var(--orange); }
+        .tab-weekend.active { background: var(--orange); }
+        .tab-exclusive { color: #8e44ad; border-color: #8e44ad; }
+        .tab-exclusive.active { background: #8e44ad; }
+
+        /* ════ RESPONSIVE ════ */
+        @media (max-width: 1024px) {
+            nav { padding: 4px 24px; }
+            .packages-section { padding: 40px; }
+            .custom-note { margin: 40px 40px 0; }
+            .special-note-box { margin: 0 40px 40px; }
+            .play-area-note { margin: 0 40px 40px; }
+            .party-cta-section { padding: 40px; }
+            .pkg-tabs-nav { padding: 24px 40px 0; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 6px 18px; }
+            .nav-links { display: none !important; }
+            .hamburger-btn { display: flex !important; }
+            .top-banner { font-size: 12px; gap: 8px; }
+
+            .page-hero { padding: 50px 20px 60px; }
+            .page-hero-title { font-size: clamp(36px, 10vw, 56px); }
+            .page-hero-desc { font-size: 15px; }
+
+            .custom-note { margin: 28px 18px 0; padding: 20px 22px; flex-direction: column; }
+            .special-note-box { margin: 0 18px 28px; }
+            .play-area-note { margin: 0 18px 30px; padding: 18px 20px; }
+
+            .packages-section { padding: 28px 18px; }
+            .pkg-header { padding: 22px 22px; }
+            .pkg-body { padding: 22px 22px; }
+            .pkg-features-grid { grid-template-columns: 1fr; }
+            .pkg-tabs-nav { padding: 20px 18px 0; gap: 8px; }
+            .pkg-tab-btn { font-size: 13px; padding: 8px 16px; }
+
+            .party-cta-section { padding: 30px 18px; }
+            .party-cta-banner { padding: 22px 18px; flex-direction: column; text-align: center; width: 100%; }
+        }
+                /* ════ FOOTER ════ */
+.ff-footer {
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+  border-top: 2px solid #e8f0f8;
+  position: relative;
+  z-index: 5;
+}
+
+.ff-footer-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 0.8fr 1.1fr;
+  gap: 40px;
+  padding: 56px 60px 40px;
+  max-width: 1800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ff-foot-col h4 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 18px; font-weight: 800;
+  color: #1a1a2e; margin: 0 0 16px;
+}
+
+.ff-foot-col p {
+  font-size: 13.5px; color: #555;
+  font-weight: 600; line-height: 1.75;
+}
+
+.ff-foot-col ul {
+  list-style: disc;
+  padding-left: 18px; margin: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.ff-foot-col ul li a {
+  font-size: 13.5px; color: #555;
+  font-weight: 600; text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ff-foot-col ul li a:hover { color: #1A5FA8; }
+
+/* About col */
+.ff-footer-logo {
+  width: 140px; height: auto;
+  display: block; margin: 14px 0 12px;
+}
+
+.ff-about-party {
+  font-size: 13px; color: #555;
+  font-weight: 600; margin-top: 14px;
+  line-height: 1.65;
+  border-top: 1px dashed #dde;
+  padding-top: 12px;
+}
+
+/* Contact */
+.ff-contact-item {
+  display: flex; align-items: flex-start;
+  gap: 9px; margin-bottom: 11px;
+}
+
+.ff-contact-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #3BAEE8;
+  margin-top: 7px; flex-shrink: 0;
+}
+
+.ff-contact-item a {
+  color: #1A5FA8; font-weight: 700;
+  font-size: 13.5px; text-decoration: underline;
+}
+
+.ff-contact-item span.txt {
+  font-size: 13px; color: #555;
+  font-weight: 600; line-height: 1.65;
+}
+
+/* Location cards */
+.ff-loc-card {
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.ff-loc-card.yellow {
+  background: #FFF9C4;
+  border-left: 4px solid #FFD600;
+}
+
+.ff-loc-card.blue {
+  background: #E3F2FD;
+  border-left: 4px solid #3BAEE8;
+}
+
+.ff-loc-name {
+  font-family: 'Baloo 2', cursive;
+  font-size: 15px; font-weight: 800;
+  color: #1a1a2e; margin-bottom: 3px;
+}
+
+.ff-loc-addr {
+  font-size: 12.5px; color: #444;
+  font-weight: 600; margin-bottom: 3px;
+}
+
+.ff-loc-tel {
+  font-size: 12.5px; color: #666;
+  font-weight: 700;
+}
+
+/* Subscribe */
+.ff-subscribe-wrap { margin-top: 18px; }
+
+.ff-subscribe-wrap h5 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 17px; font-weight: 800;
+  color: #1a1a2e; margin: 0 0 6px;
+}
+
+.ff-subscribe-wrap p {
+  font-size: 13px; color: #555;
+  font-weight: 600; line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.ff-sub-input {
+  width: 100%; padding: 11px 14px;
+  border: 2px solid #E63329;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px; color: #333;
+  outline: none; box-sizing: border-box;
+  margin-bottom: 9px;
+}
+
+.ff-sub-input:focus { border-color: #1A5FA8; }
+
+.ff-sub-btn {
+  width: 100%;
+  background: #1A3A6B;
+  color: #fff; border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 1.5px; cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ff-sub-btn:hover { background: #1A5FA8; }
+
+/* Kids images in footer */
+.ff-footer-kids {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  padding: 0 60px 0;
+  pointer-events: none;
+}
+
+.ff-footer-kid {
+  width: 160px; height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Bottom bar */
+.ff-footer-bottom {
+  background: #f4f8fc;
+  border-top: 1px solid #dde8f5;
+  padding: 16px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ff-footer-bottom span,
+.ff-footer-bottom a {
+  font-size: 13px; color: #888;
+  font-weight: 600; text-decoration: none;
+}
+
+.ff-footer-bottom a:hover { color: #1A5FA8; }
+.ff-footer-bottom .heart { color: #E63329; }
+.ff-footer-bottom-links { display: flex; gap: 22px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ff-footer-main { grid-template-columns: 1fr 1fr; gap: 30px; padding: 44px 40px 30px; }
+  .ff-footer-bottom { padding: 14px 40px; }
+  .ff-footer-kids { padding: 0 40px; }
+}
+
+@media (max-width: 768px) {
+  .ff-footer-main { grid-template-columns: 1fr; gap: 28px; padding: 36px 18px 24px; }
+  .ff-footer-bottom { padding: 14px 18px; flex-direction: column; text-align: center; }
+  .ff-footer-bottom-links { justify-content: center; }
+  .ff-footer-kids { padding: 0 18px; }
+  .ff-footer-kid { width: 110px; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- STICKY BOOK BTN -->
+<button class="sticky-book-btn" onclick="document.getElementById('book-form').scrollIntoView({behavior:'smooth'})">
+    🎂 Book a Party!
+</button>
+
+<!-- BUBBLES BG -->
+<div class="bubbles-bg">
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+</div>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+    🎉 NOW OPEN at 2 locations!
+    <span class="divider">—</span>
+    <span>Nawala &amp; Mount Lavinia</span>
+    <span class="divider">|</span>
+    Birthday parties available 7 days a week! 🎈
+</div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <img src="images/logo.png" alt="Fun Factory" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="logo-text" style="display:none">Fun<span>Factory</span></div>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#Facilities">Facilities</a></li>
+        <li><a href="index.html#services-section">Services</a></li>
+        <li><a href="party-packages.html" class="active">Party Packages</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="index.html#ff-gallery">Photo Album</a></li>
+        <li><a href="contact-Us.html">Contact Us</a></li>
+        <li><a href="#book-form" class="btn-book-nav">Book Now</a></li>
+    </ul>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Open menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-menu-overlay" id="mobileOverlay" onclick="toggleMobileNav()"></div>
+<div class="mobile-nav-panel" id="mobileNavPanel">
+    <div class="mobile-nav-header">
+        <div class="mobile-nav-logo">Fun<span>Factory</span> 🎈</div>
+        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+    </div>
+    <ul class="mobile-nav-links">
+        <li><a href="index.html" onclick="toggleMobileNav()"><span class="nav-icon">🏠</span> Home</a></li>
+        <li><a href="about.html" onclick="toggleMobileNav()"><span class="nav-icon">ℹ️</span> About</a></li>
+        <li><a href="index.html#Facilities" onclick="toggleMobileNav()"><span class="nav-icon">🛝</span> Facilities</a></li>
+        <li><a href="index.html#services-section" onclick="toggleMobileNav()"><span class="nav-icon">⭐</span> Services</a></li>
+        <li><a href="party-packages.html" onclick="toggleMobileNav()"><span class="nav-icon">🎂</span> Party Packages</a></li>
+        <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">🏆</span> Membership</a></li>
+        <li><a href="index.html#ff-gallery" onclick="toggleMobileNav()"><span class="nav-icon">📸</span> Photo Album</a></li>
+        <div class="mobile-nav-divider"></div>
+        <li><a href="contact-Us.html" onclick="toggleMobileNav()"><span class="nav-icon">📍</span> Contact Us</a></li>
+    </ul>
+    <a href="#book-form" class="mobile-book-btn">🎈 Book Now</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <p class="page-hero-eyebrow">🎉 Unforgettable Celebrations</p>
+    <h1 class="page-hero-title">Party <span class="accent">Packages</span></h1>
+    <p class="page-hero-desc">
+        Customized party packages with bouncers, DJs, photographers, balloon archers, theme banners, sweet tables &amp; more. Hassle-free &amp; easy to organize — just leave everything to us!
+    </p>
+    <a href="#book-form" class="page-hero-cta">🎂 Book Your Party Now</a>
+</section>
+
+<!-- PACKAGE TABS NAV -->
+<div class="pkg-tabs-nav">
+    <button class="pkg-tab-btn tab-school active" onclick="scrollTo('school-pkg')">🏫 School Package</button>
+    <button class="`pkg-tab-btn `tab-weekday" onclick="scrollTo('weekday-pkg')">📅 Weekday Parties</button>
+    <button class="pkg-tab-btn tab-weekend" onclick="scrollTo('weekend-pkg')">🎉 Weekend Parties</button>
+    <button class="pkg-tab-btn tab-exclusive" onclick="scrollTo('exclusive-pkg')">👑 Exclusive Packages</button>
+</div>
+
+<!-- CUSTOM NOTE -->
+<div class="custom-note reveal">
+    <div class="custom-note-icon">📞</div>
+    <p>
+        <strong>Customized events available!</strong> Please call us on <strong>077 360 3777</strong> for details on how to personalize your child's birthday party. We also offer balloon archers, themed banners, cutouts, complete sweet table arrangements &amp; much more!
+    </p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCHOOL PACKAGE
+═══════════════════════════════════════════ -->
+<div class="packages-section" id="school-pkg">
+    <div class="section-heading reveal-left">
+        <span class="section-heading-badge badge-dark-blue" style="background:">🏫 School Package</span>
+        <div class="section-heading-line badge-dark-blue"></div>
+    </div>
+
+    <div class="pkg-card pkg-school reveal ">
+        <div class="pkg-header" >
+            <div class="pkg-header-left">
+                <div class="pkg-name">School Fun</div>
+                <div class="pkg-sub">A Package Just for Schools! · Mon–Fri (Excl. Public, Bank &amp; School Holidays)</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 900/-</div>
+                <div class="price-label">Per Child</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Mon to Fri (Excl. Public, Bank &amp; School Holidays)</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 9am to 1pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 2 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-green"></span> Rs.900/- Per Child</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-green"></span> Duration: 2 Hours</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-green"></span> Meal pack for Kids &amp; Teachers — Rs.500/- each</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-green"></span> Includes: Sandwich, piece of cake &amp; juice</div>
+            </div>
+            <div class="pkg-min-badge">👦 Minimum 20 Kids Required</div>
+            <div class="pkg-note"><strong>* Please talk to us for more customized events.</strong></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     WEEKDAY PARTIES
+═══════════════════════════════════════════ -->
+<div class="packages-section" id="weekday-pkg" style="padding-top:0">
+    <div class="section-heading reveal-left">
+        <span class="section-heading-badge badge-blue">📅 Weekday Parties</span>
+        <div class="section-heading-line line-blue"></div>
+    </div>
+
+    <!-- EASY FUN -->
+    <div class="pkg-card pkg-weekday reveal">
+        <div class="pkg-header">
+            <div class="pkg-header-left">
+                <div class="pkg-name">Easy Fun</div>
+                <div class="pkg-sub">Weekday Party · Mon–Fri (Excl. Public, Bank &amp; School Holidays)</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 2,000/-</div>
+                <div class="price-label">Per Child + Rs.300/- Adult</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Mon to Fri (Excl. Public, Bank &amp; School Holidays)</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 10am to 8pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 2 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Rs.2000/- Per Child, Rs.300/- per adult</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Finger food &amp; drinks brought in by client</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Duration: 2 Hours</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Use of Party Room</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Fun Factory Party Invitations</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Balloons Décor in party room</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Happy Birthday Bunting</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> 3% Service Charge</div>
+            </div>
+            <div class="pkg-min-badge">👦 Minimum 20 Kids Required</div>
+            <div class="pkg-note"><strong>* Please talk to us for more customized events.</strong></div>
+        </div>
+    </div>
+
+    <!-- JUNIOR PLUS -->
+    <div class="pkg-card pkg-weekday reveal">
+        <div class="pkg-header">
+            <div class="pkg-header-left">
+                <div class="pkg-name">Junior Plus</div>
+                <div class="pkg-sub">Weekday Party · Mon–Fri (Excl. Public, Bank &amp; School Holidays)</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 2,200/-</div>
+                <div class="price-label">Per Child + Rs.300/- Adult</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Mon to Fri (Excl. Public, Bank &amp; School Holidays)</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 10am to 1pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 2 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Rs.2200/- Per Child, Rs.300/- per adult</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Finger food &amp; drinks brought in by client</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Duration: 2 Hours</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Use of Party Room</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Fun Factory Party Invitations</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Balloons décor in party room</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> Happy Birthday Bunting</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-blue"></span> 3% Service Charge</div>
+            </div>
+            <div class="pkg-min-badge">👦 Minimum 20 Kids Required</div>
+            <div class="pkg-note"><strong>* Please talk to us for more customized events.</strong></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     WEEKEND PARTIES
+═══════════════════════════════════════════ -->
+<div class="packages-section" id="weekend-pkg" style="padding-top:0">
+    <div class="section-heading reveal-left">
+        <span class="section-heading-badge badge-orange">🎉 Weekend Parties</span>
+        <div class="section-heading-line line-orange"></div>
+    </div>
+
+    <!-- SUPER FUN -->
+    <div class="pkg-card pkg-weekend reveal">
+        <div class="pkg-header">
+            <div class="pkg-header-left">
+                <div class="pkg-name">Super Fun</div>
+                <div class="pkg-sub">Weekend Party · Saturday, Sunday &amp; all Public, Bank Holidays</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 2,500/-</div>
+                <div class="price-label">Per Child</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Sat, Sun &amp; all Public, Bank Holidays</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 10am to 1pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 2 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> Rs.2500/- Per Child</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> Duration: 2 Hours</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> Use of Party Room</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> Exclusive Venue Hire</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> Party Invitations, Balloons &amp; Happy Birthday Banner</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> Art &amp; Craft Activity / Kids Games</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> 02 Finger Food Items From Our Café Menu &amp; Juice per Child</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-orange"></span> 3% Service Charge</div>
+            </div>
+            <div class="pkg-min-badge">👦 Minimum 20 Kids Required</div>
+            <div class="pkg-note"><strong>* Please talk to us for more customized events.</strong></div>
+        </div>
+    </div>
+</div>
+
+<!-- SPECIAL NOTE for options 1-5 -->
+<div class="special-note-box reveal">
+    <h4>📌 Special Note for All Party Packages (Options 1–5)</h4>
+    <ul>
+        <li>Exclusive use of the Party Room</li>
+        <li>Dedicated Party Executive/s to Look After the Party</li>
+        <li>2Hrs Party Duration — 90mins Play Time &amp; 30mins Food Allocation</li>
+        <li>Art / Craft Activity / Kids Games</li>
+        <li>Free Fun Factory Invitations for All the Party Guests</li>
+    </ul>
+</div>
+
+<!-- PLAY AREA NOTE -->
+<div class="play-area-note reveal">
+    <span class="note-icon">🛝</span>
+    <p>* The Fun Factory Play Area Will Remain Open to the Public.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     EXCLUSIVE PACKAGES
+═══════════════════════════════════════════ -->
+<div class="packages-section" id="exclusive-pkg" style="padding-top:0">
+    <div class="section-heading reveal-left">
+        <span class="section-heading-badge badge-purple">👑 Exclusive Packages</span>
+        <div class="section-heading-line line-purple"></div>
+    </div>
+
+    <!-- ULTRA COOL -->
+    <div class="pkg-card pkg-exclusive reveal">
+        <div class="pkg-header">
+            <div class="pkg-header-left">
+                <div class="pkg-name">Ultra Cool</div>
+                <div class="pkg-sub">Exclusive · Any Day of the Week Including Public &amp; Bank Holidays</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 90,000/-</div>
+                <div class="price-label">Total (+ Rs.20,000/hr extra)</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Any Day incl. Public &amp; Bank Holidays</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 10am to 8pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 2 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Rs.90,000/- — Duration 2hrs (Additional 1hr: Rs.20,000/-)</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Exclusive Venue Hire</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Entire Fun Factory Party Crew to Assist with the Party</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Food for 30 Kids — Choice of 2 Finger Foods from Café Menu</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Juice for 30 Kids Plus Drinking Water</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Approval for External Catering</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Art &amp; Craft Activity / Kids Games</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Fun Factory Party Invitations</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> Balloons and Happy Birthday Banner</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-purple"></span> +3% Service Charge</div>
+            </div>
+            <div class="loot-note">
+                🎁 <strong>LOOT BAGS:</strong> Fun Factory play time gift vouchers for your loot bags can be purchased from reception at discounted rates.
+            </div>
+        </div>
+    </div>
+
+    <!-- PLATINUM -->
+    <div class="pkg-card pkg-platinum reveal">
+        <div class="pkg-header">
+            <div class="pkg-header-left">
+                <div class="pkg-name">✨ Platinum</div>
+                <div class="pkg-sub">Exclusive · Any Day of the Week Including Public &amp; Bank Holidays</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 160,000/-</div>
+                <div class="price-label">Total (Duration: 4hrs)</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Any Day incl. Public &amp; Bank Holidays</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 10am to 8pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 4 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Rs.160,000/- · Duration: 4hrs</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Exclusive Venue Hire</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Entire Fun Factory Party Crew to Assist</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Food for 40 Kids — Choice of 3 Finger Foods from Café Menu</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Fresh Fruit Juice for 40 Kids Plus Drinking Water</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Approval for External Catering</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Customized (Themed) invitations for 40 Kids</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Choice of One (1) Party Extras from List of Party Specials</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Art &amp; Craft Activity / Kids Games</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Themed customized backdrop for cake table, cloth &amp; satin frill</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Themed decorations &amp; theme colour balloon décor (as per party's requirements)</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> Birthday Voucher for Birthday Child</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> 3kg cake, 10 macarons &amp; 12 cake pops</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-gray"></span> +3% Service Charge</div>
+            </div>
+            <div class="loot-note">
+                🎁 <strong>LOOT BAGS:</strong> Fun Factory play time gift vouchers for your loot bags can be purchased from reception at discounted rates.
+            </div>
+        </div>
+    </div>
+
+    <!-- TITANIUM -->
+    <div class="pkg-card pkg-titanium reveal">
+        <div class="pkg-header">
+            <div class="pkg-header-left">
+                <div class="pkg-name">💎 Titanium</div>
+                <div class="pkg-sub">Exclusive · Any Day of the Week Including Public &amp; Bank Holidays</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 210,000/-</div>
+                <div class="price-label">Total (Duration: 4hrs)</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Any Day incl. Public &amp; Bank Holidays</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 10am to 8pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 4 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Rs.210,000/- · Duration: 4hrs</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Exclusive Venue Hire</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Entire Fun Factory Party Crew to Assist</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Food for 50 Kids — Choice of 4 Finger Foods from Café Menu</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Juice for 50 Kids Plus Drinking Water</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Approval for External Catering</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Customized (Themed) invitations for 50 Kids</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Choice of Two (2) Party Extras from List of Party Specials</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Art &amp; Craft Activity / Kids Games</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> 3kg theme birthday cake, 02 jars marshmallows &amp; kisses, 01 dozen theme cookies</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Themed customized backdrop, table covers for all tables, satin frill for cake table</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Theme Plates &amp; Cups &amp; napkins &amp; table center pieces for 30 kids, 01 dozen theme cookies</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> Themed decorations &amp; theme colour balloon décor (as per party's requirements &amp; theme)</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-dark"></span> +3% Service Charge</div>
+            </div>
+            <div class="loot-note">
+                🎁 <strong>LOOT BAGS:</strong> Fun Factory play time gift vouchers for your loot bags can be purchased from reception at discounted rates.
+            </div>
+        </div>
+    </div>
+
+    <!-- RHODIUM -->
+    <div class="pkg-card pkg-rhodium reveal">
+        <div class="pkg-header">
+            <div class="pkg-header-left">
+                <div class="pkg-name">🔴 Rhodium</div>
+                <div class="pkg-sub">Exclusive · Any Day of the Week Including Public &amp; Bank Holidays</div>
+            </div>
+            <div class="pkg-price-tag">
+                <div class="price">Rs. 295,000/-</div>
+                <div class="price-label">Total (Duration: 4hrs)</div>
+            </div>
+        </div>
+        <div class="pkg-body">
+            <div class="pkg-meta-row">
+                <div class="pkg-meta-chip"><span class="chip-icon">📅</span> Any Day incl. Public &amp; Bank Holidays</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏰</span> Time Slot: 10am to 8pm</div>
+                <div class="pkg-meta-chip"><span class="chip-icon">⏱️</span> Duration: 4 Hours</div>
+            </div>
+            <div class="pkg-features-grid">
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Rs.295,000/- · Duration: 4hrs</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Exclusive Venue Hire</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Entire Fun Factory Party Crew to Assist</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Food for 60 Kids — Choice of 6 Finger Foods from Café Menu</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Juice for 60 Kids Plus Drinking Water</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Approval for External Catering</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Customized (Themed) invitations for 60 Kids</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> 5kg one or two theme birthday cake, 01 jars of marshmallows &amp; kisses, 01 dozen theme cookies, 12 cake pops</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Themed customized backdrop, table covers for all tables, satin frill for cake table</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Theme Plates &amp; Cups &amp; napkins &amp; table center pieces &amp; Hats for 60 kids, 60 Loot bags (without Gifts)</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Themed decorations &amp; theme colour balloon décor (as per party host requirements)</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Ski one or two tier theme birthday cake, 01 jars of marshmallows &amp; kisses, 01 dozen theme cookies</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> Art &amp; Craft Activity / Kids Games</div>
+                <div class="pkg-feature"><span class="pkg-feature-dot dot-red"></span> +3% Service Charge</div>
+            </div>
+            <div class="loot-note">
+                🎁 <strong>LOOT BAGS:</strong> Fun Factory play time gift vouchers for your loot bags can be purchased from reception at discounted rates.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PARTY CTA + BOOK FORM -->
+<section class="party-cta-section" id="book-form">
+    <div class="party-cta-banner">
+        <div class="party-cta-center">
+            <h2>Ready to Book a Party? 🎉</h2>
+            <p class="cta-sub">Call us to check availability and packages</p>
+            <p class="cta-phone">📞 077 360 3777</p>
+        </div>
+    </div>
+
+    <div class="party-socials">
+        <a href="https://facebook.com" target="_blank" title="Facebook">📘</a>
+        <a href="https://instagram.com" target="_blank" title="Instagram">📸</a>
+        <a href="https://youtube.com" target="_blank" title="YouTube">▶️</a>
+        <a href="https://tiktok.com" target="_blank" title="TikTok">🎵</a>
+    </div>
+</section>
+
+<footer class="ff-footer">
+
+    <div class="ff-footer-main">
+
+        <!-- COL 1: About -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">About</h4>
+            <p style="font-size:15px;">Fun Factory is Sri Lanka's premier supervised indoor playground for children aged 0–11 years. With world-class facilities in Nawala and Mount Lavinia, we deliver the ultimate kids play experience in a safe, clean and exciting environment.</p>
+
+            <img class="ff-footer-logo" src="images/logo.png" alt="Fun Factory Logo">
+
+            <p class="ff-about-party" style="font-size:15px;">
+                🎉 <strong>Party Bookings</strong><br>
+                Parties can be booked any day of the week. Call us or visit our website!
+            </p>
+        </div>
+
+        <!-- COL 2: Contact -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Contact Us</h4>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <br>
+                <span class="txt">
+          <a href="tel:0112802656" style="font-size:15px;">011 2802656</a><br>
+          <a href="tel:0773603777" style="font-size:15px;">077 3603777</a>
+        </span>
+            </div>
+            <div class="ff-contact-item">
+                <span class="txt">&nbsp;</span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt"><a href="mailto:info@funfactory.lk" style="font-size:15px;" >info@funfactory.lk</a></span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt" style="font-size:15px;">
+          573 Nawala Road, Rajagiriya<br>
+          3rd Floor, Mount City Building,<br>
+          143 1/2 Galle Rd, Mount Lavinia
+        </span>
+            </div>
+
+            <div class="ff-contact-item">
+                <span class="ff-contact-dot"></span>
+                <span class="txt" style="font-size:15px;">
+          Mon–Fri: 9am–8pm<br>
+          Sat–Sun &amp; Public Holidays: 9am–8pm
+        </span>
+            </div>
+        </div>
+
+        <!-- COL 3: Quick Links -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Quick Links</h4>
+            <ul>
+                <li><a href="#" style="font-size:15px;">Jungle Gym</a></li>
+                <li><a href="#" style="font-size:15px;">Toddlers &amp; Infants</a></li>
+                <li><a href="#" style="font-size:15px;">Library &amp; Activity Zones</a></li>
+                <li><a href="#" style="font-size:15px;">Cafe</a></li>
+                <li><a href="#" style="font-size:15px;">Membership</a></li>
+                <li><a href="#" style="font-size:15px;">Photo Album</a></li>
+                <li><a href="#" style="font-size:15px;">Event Calendar</a></li>
+                <li><a href="#" style="font-size:15px;">Contact Us</a></li>
+                <li><a href="#" style="font-size:15px;">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- COL 4: Locations + Subscribe -->
+        <div class="ff-foot-col">
+            <h4 style="font-size:30px;">Our Locations</h4>
+
+            <div class="ff-loc-card yellow">
+                <div class="ff-loc-name" style="font-size:20px;">Nawala Branch</div>
+                <div class="ff-loc-addr" style="font-size:15px;">573, Nawala Road, Rajagiriya</div>
+                <div class="ff-loc-tel" style="font-size:15px;">011 286 2656 · 077 360 3777</div>
+            </div>
+
+            <div class="ff-loc-card blue">
+                <div class="ff-loc-name" style="font-size:20px;">Mount Lavinia Branch</div>
+                <div class="ff-loc-addr" style="font-size:15px;">3rd Floor, Mount City Building, Galle Road</div>
+                <div class="ff-loc-tel" style="font-size:15px;">011 588 2656 · 077 360 3777</div>
+            </div>
+
+            <div class="ff-subscribe-wrap">
+                <h5 style="font-size:15px;">Subscribe</h5>
+                <p style="font-size:15px;">Subscribe here with your email to get the very latest news about FUN FACTORY</p>
+                <input class="ff-sub-input" type="email" placeholder="Email Address" style="font-size:15px;">
+                <button class="ff-sub-btn" style="font-size:15px;">SUBMIT</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!--    &lt;!&ndash; Kids images middle &ndash;&gt;-->
+    <!--    <div class="ff-footer-kids">-->
+    <!--        <img class="ff-footer-kid" src="images/footer/img.png" alt="Girl with hoop">-->
+    <!--        <img class="ff-footer-kid" src="images/footer-boy.png" alt="Boy with blocks">-->
+    <!--    </div>-->
+
+    <!-- Bottom bar -->
+    <div class="ff-footer-bottom">
+        <span>© 2025 Fun Factory — All Rights Reserved. Website by Ribelz.</span>
+        <div class="ff-footer-bottom-links">
+            <a href="#">Site Map</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+        </div>
+        <span><span class="heart">♥</span> Made for kids, by people who love them</span>
+    </div>
+
+</footer>
+<script>
+    // Mobile nav
+    function toggleMobileNav() {
+        const btn = document.getElementById('hamburgerBtn');
+        const panel = document.getElementById('mobileNavPanel');
+        const overlay = document.getElementById('mobileOverlay');
+        const isOpen = panel.classList.toggle('open');
+        btn.classList.toggle('open');
+        overlay.classList.toggle('open');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const panel = document.getElementById('mobileNavPanel');
+            if (panel.classList.contains('open')) toggleMobileNav();
+        }
+    });
+
+    // Scroll progress bar
+    window.addEventListener('scroll', function() {
+        const scrolled = window.scrollY;
+        const total = document.body.scrollHeight - window.innerHeight;
+        const pct = (scrolled / total) * 100;
+        document.getElementById('scrollProgress').style.width = pct + '%';
+    });
+
+    // Tab scroll
+    function scrollTo(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
