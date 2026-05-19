@@ -189,7 +189,7 @@
         }
         .mobile-nav-close:hover { background: rgba(255,255,255,0.35); }
 
-        .mobile-nav-links { list-style: none; padding: 10px 0; flex: 1; }
+        .mobile-nav-links { list-style: none; padding: 10px 0; }
         .mobile-nav-links li a {
           display: flex;
           align-items: center;
@@ -787,10 +787,16 @@
           .ff-footer-bottom { padding: 14px 40px; }
         }
 
+        @media (max-width: 600px) {
+          .top-banner { font-size: 12px; gap: 8px; padding: 8px 14px; }
+        }
+
         @media (max-width: 768px) {
           .ff-footer-main { grid-template-columns: 1fr; gap: 28px; padding: 36px 18px 24px; }
           .ff-footer-bottom { padding: 14px 18px; flex-direction: column; text-align: center; }
           .ff-footer-bottom-links { justify-content: center; }
+          nav { padding: 6px 18px; }
+          .logo img { height: 60px; }
         }
     </style>
 </head>
@@ -840,7 +846,7 @@
     </div>
     <ul class="mobile-nav-links">
         <li><a href="index.html" onclick="toggleMobileNav()"><span class="nav-icon">🏠</span> Home</a></li>
-        <li><a href="about.html" onclick="toggleMobileNav()"><span class="nav-icon">ℹ️</span> About Us</a></li>
+        <li><a href="about.html" onclick="toggleMobileNav()"><span class="nav-icon">👤</span> About Us</a></li>
         <li><a href="#facilities-section" onclick="toggleMobileNav()"><span class="nav-icon">🛝</span> Facilities</a></li>
         <li><a href="#" onclick="toggleMobileNav()"><span class="nav-icon">⭐</span> Services</a></li>
         <li><a href="party-packages.html" onclick="toggleMobileNav()"><span class="nav-icon">🎂</span> Party Packages</a></li>
